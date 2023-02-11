@@ -1,13 +1,14 @@
 # Notes-app
 Notes app (Python)
 
-(🌟colorful info about app🌟)
+(🌟colorful info about the app🌟)
 
 ---
 
 ## TODO:
 - [ ] [UI] : Create UI, main menu
 - [ ] [Create Test Data] : create JSON with some data
+- [ ] [Generate Data?] : generate some data when app starting?
 - [ ] [Read from file] : read data from json file
 - [ ] [Validation] : validate the data input from user
 - [ ] [Logging] : logging module
@@ -26,7 +27,10 @@ Notes app (Python)
 ### Project structure
 1) app.py - app entrance point
 2) main.py - controller
-3) file_worker.py - work with file (read, edit, save, delete)
-4) json/ - directory for JSON file with notes
+3) user_interface.py - main menu of the app
+4) validator.py - validator of input data
+5) file_worker.py - work with file (read, edit, save, delete)
+6) logger.py - logging module
+7) Data_store/ - directory for JSON file with notes
 
 ![structure.png](G:\Notes\Notes-app\structure.png)
