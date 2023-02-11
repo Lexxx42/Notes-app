@@ -33,4 +33,4 @@ Notes app (Python)
 6) logger.py - logging module
 7) Data_store/ - directory for JSON file with notes
 
-![structure.png](G:\Notes\Notes-app\structure.png)
+![structure.png](structure.png)
