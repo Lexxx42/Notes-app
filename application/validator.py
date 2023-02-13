@@ -32,6 +32,16 @@ def validation_operation(main_menu_mode) -> int:
     match main_menu_mode:
         case 1:
             validate_read()
+        case 2:
+            validate_add_note()
+        case 3:
+            validate_edit_note()
+        case 4:
+            validate_save_note()
+        case 5:
+            validate_delete_note()
+        case _:
+            logging.WARNING(INCORRECT_INPUT)
 
 
 def validate_read():
@@ -44,7 +54,7 @@ def validate_read():
             logging.exception(MUST_BE_INTEGER)
             continue
         if operation_type in range(number_of_available_modes):
-            logging.info(f'operation code for read = {operation_type}')
-            return 10 + operation_type
+            logging.info(f'operation code for read = {operation_type + 10}')
+            return operation_type + 10
         print(INCORRECT_INPUT)
         logging.exception(INCORRECT_INPUT)

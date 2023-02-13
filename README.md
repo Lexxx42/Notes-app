@@ -8,7 +8,7 @@ Notes app (Python)
 ## TODO:
 - [x] [UI] : create UI, main menu
 - [x] [Requirements] : create requirements.txt
-- [ ] [Create Test Data] : create JSON with some data
+- [x] [Create Test Data] : create JSON with some data
 - [ ] [Create Dir for data] : creation of directory for data storage
 - [ ] [Generate Data] : generate some data when app starting
 - [ ] [Read from file] : read data from json file
