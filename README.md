@@ -9,7 +9,7 @@ Notes app (Python)
 - [x] [UI] : create UI, main menu
 - [x] [Requirements] : create requirements.txt
 - [x] [Create Test Data] : create JSON with some data
-- [ ] [Create Dir for data] : creation of directory for data storage
+- [x] [Create Dir for data] : creation of directory for data storage
 - [ ] [Generate Data] : generate some data when app starting
 - [ ] [Read from file] : read data from json file
 - [ ] [Validation] : validate the data input from user
