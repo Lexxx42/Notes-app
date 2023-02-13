@@ -10,8 +10,9 @@ Notes app (Python)
 - [x] [Requirements] : create requirements.txt
 - [x] [Create Test Data] : create JSON with some data
 - [x] [Create Dir for data] : creation of directory for data storage
-- [ ] [Generate Data] : generate some data when app starting
+- [x] [Generate Data] : generate some data when app starting
 - [ ] [Read from file] : read data from json file
+- [ ] [UI] : all menus
 - [ ] [Validation] : validate the data input from user
 - [x] [Logging] : logging module
 - [ ] [Logging] : logging in app
