@@ -11,7 +11,8 @@ Notes app (Python)
 - [ ] [Generate Data?] : generate some data when app starting?
 - [ ] [Read from file] : read data from json file
 - [ ] [Validation] : validate the data input from user
-- [ ] [Logging] : logging module
+- [x] [Logging] : logging module
+- [ ] [Logging] : logging in app
 - [ ] [Filtration by date] : filter notes by date when reading from file
 - [ ] [Save note] : save data to file
 - [ ] [Print all] : print all notes to console

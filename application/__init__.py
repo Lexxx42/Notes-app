@@ -1,3 +1,3 @@
-# from .main import asd
-#
-# __all__ = ['asd']
+from .main import entrance_point
+
+__all__ = ['entrance_point']
