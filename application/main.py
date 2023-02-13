@@ -1,4 +1,6 @@
 from .logger import logging
+from .user_interface import main_menu
+
 
 def entrance_point():
     logging.info('Start program.')
@@ -8,7 +10,3 @@ def entrance_point():
     logging.info('Session finish')
     if operation_type != 0:
         entrance_point()
-
-def main_menu():
-    return (0, 2)
-

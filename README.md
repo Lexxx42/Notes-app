@@ -6,9 +6,11 @@ Notes app (Python)
 ---
 
 ## TODO:
-- [ ] [UI] : Create UI, main menu
+- [x] [UI] : create UI, main menu
+- [x] [Requirements] : create requirements.txt
 - [ ] [Create Test Data] : create JSON with some data
-- [ ] [Generate Data?] : generate some data when app starting?
+- [ ] [Create Dir for data] : creation of directory for data storage
+- [ ] [Generate Data] : generate some data when app starting
 - [ ] [Read from file] : read data from json file
 - [ ] [Validation] : validate the data input from user
 - [x] [Logging] : logging module
@@ -22,6 +24,7 @@ Notes app (Python)
 - [ ] [Edit note] : edit selected note
 - [ ] [Module docs] : module documentation
 - [ ] [Function docs] : function documentation
+- [ ] [README] : edit readme documentation
 
 ---
 
