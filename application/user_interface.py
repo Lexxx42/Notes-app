@@ -36,7 +36,7 @@ def choose_option(main_mode) -> None | tuple[int, int]:
 0 - previous menu
 """)
             operation = validation_operation(main_mode)
-    if operation == 10:
+    if operation in [10]:
         return main_menu()
     else:
         return main_mode, operation

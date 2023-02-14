@@ -12,5 +12,5 @@ def load_from_file(filename):
     with open(filename, encoding='utf-8') as file:
         data = json.load(file)
     logging.info(f'Read data from {filename}')
-    return print(data)
+    return data
 # TO DO: pretty table output.
