@@ -5,13 +5,13 @@ from .file_worker import write_to_file
 
 DEFAULT_DIRNAME = './Data_store/'
 DEFAULT_FILENAME = 'notes.json'
-TEST_DATA_JSON = {'notes': [
-    {'id': '1', 'title': 'Buy milk', 'data': 'I need to buy some coconut milk for my coffee.',
-     'date': '03-02-2023'},
-    {'id': '2', 'title': 'Call teacher', 'data': 'Ask about mistakes found in my homework.',
-     'date': '09-02-2023'},
-    {'id': '8', 'title': 'Ask Mark about his life', 'data':
-        'I should call my old friend Mark this friday.', 'date': '13-02-2023'}]}
+TEST_DATA_JSON = {"notes": [
+    {"id": "1", "title": "Buy milk", "data": "I need to buy some coconut milk for my coffee.", "date": "03-02-2023"},
+    {"id": "2", "title": "Call teacher", "data": "Ask about mistakes found in my homework.", "date": "09-02-2023"},
+    {"id": "8", "title": "Ask Mark about his life", "data": "I should call my old friend Mark this friday.",
+     "date": "13-02-2023"},
+    {"id": "12", "title": "Use time machine", "data": "Use time machine to travel back to the past.",
+     "date": "01-01-1990"}]}
 
 
 def entrance_point():
