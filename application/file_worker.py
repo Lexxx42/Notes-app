@@ -13,4 +13,3 @@ def load_from_file(filename):
         data = json.load(file)
     logging.info(f'Read data from {filename}')
     return data
-# TO DO: pretty table output.
