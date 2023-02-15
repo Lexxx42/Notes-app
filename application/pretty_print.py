@@ -13,3 +13,6 @@ def prettytable_print_all(data_notes):
     except TypeError as e:
         print(e)
         logging.exception(e)
+
+def prettytable_print_filter_date(data_notes):
+    print("desc date")
