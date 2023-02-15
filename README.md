@@ -5,6 +5,15 @@ Notes app (Python)
 
 ---
 
+## How to use Notes app
+1. Clone repository to your machine ```git clone *REP_LINK*```
+2. Install python 3.11: [Python](https://www.python.org/downloads/)
+3. Check if pip is installed on your machine ```pip --version```
+4. Install pip if you don't have it installed: [pip documentation](https://pip.pypa.io/en/stable/installation/)
+5. Install requirements: ```pip install -r requirements.txt```
+
+---
+
 ## TODO:
 - [x] [UI] : create UI, main menu
 - [x] [Requirements] : create requirements.txt
@@ -12,13 +21,14 @@ Notes app (Python)
 - [x] [Create Dir for data] : creation of directory for data storage
 - [x] [Generate Data] : generate some data when app starting
 - [ ] [Read from file] : read data from json file
+- [x] [Module pretty_print] : prints data to console
 - [ ] [UI] : all menus
 - [ ] [Validation] : validate the data input from user
 - [x] [Logging] : logging module
 - [ ] [Logging] : logging in app
 - [ ] [Filtration by date] : filter notes by date when reading from file
 - [ ] [Save note] : save data to file
-- [ ] [Print all] : print all notes to console
+- [x] [Print all] : print all notes to console
 - [ ] [Print selected] : print selected note to console
 - [ ] [Add note] : add new note to file
 - [ ] [Delete note] : delete note from file

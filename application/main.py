@@ -1,52 +1,28 @@
-from os import path, makedirs
 from .logger import logging
-from .user_interface import main_menu
-from .file_worker import write_to_file
-
-DEFAULT_DIRNAME = './Data_store/'
-DEFAULT_FILENAME = 'notes.json'
-TEST_DATA_JSON = {'notes': [
-    {'id': '1', 'title': 'Buy milk', 'data': 'I need to buy some coconut milk for my coffee.',
-     'date': '03-02-2023'},
-    {'id': '2', 'title': 'Call teacher', 'data': 'Ask about mistakes found in my homework.',
-     'date': '09-02-2023'},
-    {'id': '8', 'title': 'Ask Mark about his life', 'data':
-        'I should call my old friend Mark this friday.', 'date': '13-02-2023'}]}
+from .user_interface import main_menu, ask_about_filename
+from .file_worker import write_to_file, load_from_file
+from .data_checker_and_filler import check_data_storage, generate_filename, DEFAULT_SRC
+from .pretty_print import prettytable_print_all
 
 
 def entrance_point():
     logging.info('Start program.')
-    check_data()
+    check_data_storage()
     operation_type, operation_code = main_menu()
     logging.info(f'operation chosen = {operation_type}, operation code = {operation_code}')
-    # options(operation_type, operation_code)
+    main_handler(operation_code)
     logging.info('Session finish')
     if operation_type != 0:
         entrance_point()
 
 
-def check_data():
-    check_folder()
-    check_notes()
-
-
-def check_folder():
-    try:
-        if not path.exists(DEFAULT_DIRNAME):
-            makedirs(DEFAULT_DIRNAME)
-    except OSError as error:
-        print(f'cannot create {DEFAULT_DIRNAME} directory', error)
-        logging.exception(f'cannot create {DEFAULT_DIRNAME} directory', error)
-
-
-def check_notes():
-    try:
-        if not path.exists(DEFAULT_DIRNAME + DEFAULT_FILENAME):
-            fill_notes()
-    except OSError as error:
-        print(f'cannot create {DEFAULT_FILENAME} file', error)
-        logging.exception(f'cannot create {DEFAULT_FILENAME} file', error)
-
-
-def fill_notes():
-    write_to_file(TEST_DATA_JSON, DEFAULT_DIRNAME + DEFAULT_FILENAME)
+def main_handler(operation_code):
+    match operation_code:
+        case 11:
+            file_name_valid = ask_about_filename()
+            print(file_name_valid)
+            if not file_name_valid:
+                data_from_file = load_from_file(DEFAULT_SRC)
+            else:
+                data_from_file = load_from_file(generate_filename(file_name_valid))
+            prettytable_print_all(data_from_file)

@@ -31,15 +31,15 @@ def validation_operation(main_menu_mode) -> int:
     \nChecks user input and returns operation mode."""
     match main_menu_mode:
         case 1:
-            validate_read()
+            return validate_read()
         case 2:
-            validate_add_note()
+            return validate_add_note()
         case 3:
-            validate_edit_note()
+            return validate_edit_note()
         case 4:
-            validate_save_note()
+            return validate_save_note()
         case 5:
-            validate_delete_note()
+            return validate_delete_note()
         case _:
             logging.WARNING(INCORRECT_INPUT)
 
@@ -58,3 +58,20 @@ def validate_read():
             return operation_type + 10
         print(INCORRECT_INPUT)
         logging.exception(INCORRECT_INPUT)
+
+
+def validation_filename():
+    while True:
+        try:
+            filename = input("Enter filename: ").strip()
+        except BaseException:
+            print("Something went wrong when reading filename. Try again.")
+            logging.exception("Something went wrong when reading filename.")
+            continue
+        if not filename:
+            print('reading default file.')
+            logging.info('reading default file.')
+            return filename
+        print(f'valid for read {filename = }.')
+        logging.info(f'valid for read {filename = }.')
+        return filename
