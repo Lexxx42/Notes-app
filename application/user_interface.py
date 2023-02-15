@@ -1,5 +1,5 @@
 import sys
-from .validator import validation_mode, validation_operation
+from .validator import validation_mode, validation_operation, validation_filename
 
 
 def main_menu() -> None | tuple[int, int]:
@@ -42,11 +42,11 @@ def choose_option(main_mode) -> None | tuple[int, int]:
         return main_mode, operation
 
 
-def ask_about_filename():
+def ask_about_filename() -> str:
     print("""From which file do you want to read notes?
 You can enter name of the file without extension,
-example: notes
-Extension of the file must be .json
+or press enter to use default filename: notes
 
-0 - previous menu
+Extension of the file must be .json
 """)
+    filename = validation_filename()

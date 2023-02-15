@@ -58,3 +58,20 @@ def validate_read():
             return operation_type + 10
         print(INCORRECT_INPUT)
         logging.exception(INCORRECT_INPUT)
+
+
+def validation_filename():
+    while True:
+        try:
+            filename = input("Enter filename: ").strip()
+        except BaseException:
+            print("Something went wrong when reading filename. Try again.")
+            logging.exception("Something went wrong when reading filename.")
+            continue
+        if not filename:
+            print('reading default file.')
+            logging.info('reading default file.')
+            return filename
+        print(f'valid for read {filename = }.')
+        logging.info(f'valid for read {filename = }.')
+        return filename

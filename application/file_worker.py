@@ -9,7 +9,11 @@ def write_to_file(data, filename):
 
 
 def load_from_file(filename):
-    with open(filename, encoding='utf-8') as file:
-        data = json.load(file)
-    logging.info(f'Read data from {filename}')
-    return data
+    try:
+        with open(filename, encoding='utf-8') as file:
+            data = json.load(file)
+        logging.info(f'Read data from {filename}')
+        return data
+    except OSError as e:
+        print(e)
+        logging.exception(e)

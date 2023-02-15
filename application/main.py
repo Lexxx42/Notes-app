@@ -1,7 +1,8 @@
 from .logger import logging
 from .user_interface import main_menu, ask_about_filename
-from .file_worker import write_to_file
-from .data_checker_and_filler import check_data_storage
+from .file_worker import write_to_file, load_from_file
+from .data_checker_and_filler import check_data_storage, generate_filename, DEFAULT_SRC
+from .pretty_print import prettytable_print_all
 
 
 def entrance_point():
@@ -18,4 +19,9 @@ def entrance_point():
 def main_handler(operation_code):
     match operation_code:
         case 11:
-            ask_about_filename()
+            file_name_valid = ask_about_filename()
+            if not file_name_valid:
+                data_from_file = load_from_file(DEFAULT_SRC)
+            else:
+                data_from_file = load_from_file(generate_filename(file_name_valid))
+            prettytable_print_all(data_from_file)
