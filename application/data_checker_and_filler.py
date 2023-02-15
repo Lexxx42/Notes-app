@@ -53,4 +53,5 @@ def generate_filename(custom_filename):
     except Exception as e:
         print(e)
         logging.exception(e)
+    print(custom_src)
     return custom_src

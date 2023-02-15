@@ -20,6 +20,7 @@ def main_handler(operation_code):
     match operation_code:
         case 11:
             file_name_valid = ask_about_filename()
+            print(file_name_valid)
             if not file_name_valid:
                 data_from_file = load_from_file(DEFAULT_SRC)
             else:

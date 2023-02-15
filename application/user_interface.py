@@ -49,4 +49,4 @@ or press enter to use default filename: notes
 
 Extension of the file must be .json
 """)
-    filename = validation_filename()
+    return validation_filename()
