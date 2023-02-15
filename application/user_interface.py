@@ -40,3 +40,13 @@ def choose_option(main_mode) -> None | tuple[int, int]:
         return main_menu()
     else:
         return main_mode, operation
+
+
+def ask_about_filename():
+    print("""From which file do you want to read notes?
+You can enter name of the file without extension,
+example: notes
+Extension of the file must be .json
+
+0 - previous menu
+""")
