@@ -14,6 +14,6 @@ def load_from_file(filename):
             data = json.load(file)
         logging.info(f'Read data from {filename}')
         return data
-    except OSError as e:
+    except json.decoder.JSONDecodeError as e:
         print(e)
         logging.exception(e)
