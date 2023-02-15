@@ -15,14 +15,14 @@ TEST_DATA_JSON = {"notes": [
      "date": "01-01-1990"}]}
 
 
-def check_data_storage():
+def check_data_storage() -> None:
     logging.info('Checking data.')
     check_folder()
     check_notes_json()
     logging.info('Data checked.')
 
 
-def check_folder():
+def check_folder() -> None:
     try:
         if not path.exists(DEFAULT_DIRNAME):
             makedirs(DEFAULT_DIRNAME)
@@ -32,7 +32,7 @@ def check_folder():
         logging.exception(f'cannot create {DEFAULT_DIRNAME} directory', error)
 
 
-def check_notes_json():
+def check_notes_json() -> None:
     try:
         if not path.exists(DEFAULT_SRC):
             fill_notes()
@@ -42,16 +42,15 @@ def check_notes_json():
         logging.exception(f'cannot create {DEFAULT_FILENAME} file', error)
 
 
-def fill_notes():
+def fill_notes() -> None:  # TODO: need try.
     write_to_file(TEST_DATA_JSON, DEFAULT_SRC)
     logging.info(f'Notes filled in file {DEFAULT_FILENAME}.')
 
 
-def generate_filename(custom_filename):
+def generate_filename(custom_filename: str) -> str:
     try:
         custom_src = DEFAULT_DIRNAME + custom_filename + DEFAULT_EXTENSION
     except Exception as e:
         print(e)
         logging.exception(e)
-    print(custom_src)
     return custom_src

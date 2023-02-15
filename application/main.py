@@ -5,7 +5,7 @@ from .data_checker_and_filler import check_data_storage, generate_filename, DEFA
 from .pretty_print import pt_print_all, pt_print_filter_date
 
 
-def entrance_point():
+def entrance_point() -> None:
     logging.info('Start program.')
     check_data_storage()
     operation_type, operation_code = main_menu()
@@ -16,7 +16,7 @@ def entrance_point():
         entrance_point()
 
 
-def main_handler(operation_code):
+def main_handler(operation_code: int) -> None:
     match operation_code:
         case 11:
             file_name_valid = ask_about_filename()

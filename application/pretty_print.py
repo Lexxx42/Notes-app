@@ -2,7 +2,7 @@ from prettytable import PrettyTable
 from .logger import logging
 
 
-def pt_print_all(data_notes):
+def pt_print_all(data_notes: dict) -> None:
     try:
         x = PrettyTable()
         x.field_names = list(data_notes["notes"][0].keys())
@@ -15,7 +15,7 @@ def pt_print_all(data_notes):
         logging.exception(e)
 
 
-def pt_print_filter_date(data_notes):
+def pt_print_filter_date(data_notes: dict) -> None:
     try:
         x = PrettyTable()
         x.field_names = list(data_notes["notes"][0].keys())

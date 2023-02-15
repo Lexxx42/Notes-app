@@ -24,7 +24,7 @@ Working with:
     return choose_option(mode)
 
 
-def choose_option(main_mode) -> None | tuple[int, int]:
+def choose_option(main_mode: int) -> None | tuple[int, int]:
     """ This function is for available operations for chosen mode. """
     match main_mode:
         case 1:

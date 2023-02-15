@@ -2,7 +2,7 @@ import json
 from .logger import logging
 
 
-def write_to_file(data, filename):
+def write_to_file(data: dict, filename: str) -> None:
     try:
         with open(filename, 'w', encoding='utf-8') as file_json:
             json.dump(data, file_json, ensure_ascii=False)
@@ -18,7 +18,7 @@ def write_to_file(data, filename):
         logging.exception(err)
 
 
-def load_from_file(filename):
+def load_from_file(filename: str) -> dict:
     try:
         with open(filename, encoding='utf-8') as file:
             data = json.load(file)
