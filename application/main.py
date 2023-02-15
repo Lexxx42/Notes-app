@@ -25,6 +25,7 @@ def main_handler(operation_code):
             else:
                 data_from_file = load_from_file(generate_filename(file_name_valid))
             pt_print_all(data_from_file)
+            wait_for_continue()  # TODO: wait for user to respond.
         case 12:
             file_name_valid = ask_about_filename()
             if not file_name_valid:
@@ -32,3 +33,4 @@ def main_handler(operation_code):
             else:
                 data_from_file = load_from_file(generate_filename(file_name_valid))
             pt_print_filter_date(data_from_file)
+            wait_for_continue()
