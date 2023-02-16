@@ -10,7 +10,7 @@ def write_to_file(data: dict, filename: str) -> None:
     except FileNotFoundError as err:
         print(f'File {filename} not found.  Aborting')
         logging.exception(err)
-    except OSError:
+    except OSError as err:
         print(f'OS error occurred trying to open {filename}')
         logging.exception(err)
     except Exception as err:
