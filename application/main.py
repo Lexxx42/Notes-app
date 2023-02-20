@@ -36,6 +36,6 @@ def main_handler(operation_code: int) -> None:
             wait_for_continue()
 
 
-def wait_for_continue():
-    if input(r"Press Any key to continue: "):
+def wait_for_continue() -> None:
+    if input("Press Any key to continue: "):
         return
