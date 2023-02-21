@@ -33,15 +33,18 @@ def load_from_file(sourse: str) -> dict:
             data = json.load(file)
         logging.info(f'Read data from {sourse}')
         return data
-    except FileNotFoundError as err:
-        print(f'Sourse {sourse} not found. Aborting')
-        logging.exception(err)
-    except OSError as oserr:
-        print(f'OS error occurred trying to open {sourse}')
-        logging.exception(oserr)
-    except Exception as excerr:
-        print(f'Unexpected error opening {sourse} is', repr(excerr))
-        logging.exception(excerr)
     except json.decoder.JSONDecodeError as jsonerr:
         print(jsonerr)
         logging.exception(jsonerr)
+    except FileNotFoundError as err:
+        print(f'Sourse {sourse} not found. Aborting')
+        logging.exception(err)
+        return {}
+    except OSError as oserr:
+        print(f'OS error occurred trying to open {sourse}')
+        logging.exception(oserr)
+        return {}
+    except Exception as excerr:
+        print(f'Unexpected error opening {sourse} is', repr(excerr))
+        logging.exception(excerr)
+        return {}

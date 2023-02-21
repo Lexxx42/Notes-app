@@ -90,6 +90,7 @@ next_id = data['notes'][-1]['id']
 
 from datetime import datetime
 
+
 # print(datetime.today().strftime('%d-%m-%Y'))
 
 # print(len("I need to buy some coconut milk for my coffee."))
@@ -104,11 +105,4 @@ def fill_new_note(sourse: str, data: dict, note_id: int,
 
 def fill_dict(*args) -> dict:
     """ This function creates new note as a dictionary. """
-    return {arg[0]:arg[1] for arg in args}
-
-note = fill_new_note("as", {'a':1}, 12, "hello_t", "some data", "21-02-2023")
-print(note)
-
-print(data)
-data['notes'].append(note)
-print(data)
+    return {arg[0]: arg[1] for arg in args}

@@ -88,4 +88,3 @@ def fill_new_note(data: dict, note_id: int,
 def fill_dict(*args: Any) -> dict:
     """ This function creates new note as a dictionary. """
     return {arg[0]: arg[1] for arg in args}
-
