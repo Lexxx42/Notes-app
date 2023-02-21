@@ -4,10 +4,11 @@
 \nmain_menu() - main menu UI.
 \nchoose_option() - selection of operaton UI.
 \nask_about_filename() - filename input UI.
+\nselect_id_ui() - .
 """
 
 import sys
-from .validator import validation_mode, validation_operation, validation_filename
+from .validator import validation_mode, validation_operation, validation_filename, validation_id
 
 
 def main_menu() -> None | tuple[int, int]:
@@ -59,3 +60,11 @@ or press enter to use default filename: notes
 Extension of the file must be .json
 """)
     return validation_filename()
+
+
+def select_id_ui(data: dict) -> int:
+    """ This function is for id selection UI. """
+    print("""Please enter id of the note you want to select.
+Available ids are presented in the table above.
+""")
+    return validation_id(data)

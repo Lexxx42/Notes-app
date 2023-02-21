@@ -48,8 +48,8 @@ def pt_print_id_date(data_notes: dict) -> None:
 
         x.field_names = [_ for _ in all_fields if _ in ['id', 'date']]
 
-        for item in data_notes["notes"]:
-            x.add_row([item[i] for i in x.field_names])
+        [x.add_row([item[i] for i in x.field_names]) for item in data_notes['notes']]
+
         x.sortby = "date"
         x.reversesort = True
         print(x)

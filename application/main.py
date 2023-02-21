@@ -8,10 +8,10 @@
 """
 
 from .logger import logging
-from .user_interface import main_menu, ask_about_filename
+from .user_interface import main_menu, ask_about_filename, select_id_ui
 from .file_worker import write_to_file, load_from_file
 from .data_checker_and_filler import check_data_storage, generate_filename, DEFAULT_SRC
-from .pretty_print import pt_print_all, pt_print_filter_date
+from .pretty_print import pt_print_all, pt_print_filter_date, pt_print_id_date
 
 
 def entrance_point() -> None:
@@ -58,7 +58,8 @@ def handler_for_read(operation_code: int) -> None:
                 data_from_file = load_from_file(DEFAULT_SRC)
             else:
                 data_from_file = load_from_file(generate_filename(file_name_valid))
-            pt_print_filter_date(data_from_file)
+            pt_print_id_date(data_from_file)
+            select_id_ui(data_from_file)
             wait_for_continue()
 
 

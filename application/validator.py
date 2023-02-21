@@ -15,6 +15,7 @@ from .logger import logging
 AVAILABLE_MODES_MAIN_MENU = 6
 MUST_BE_INTEGER = 'Incorrect input! Input must be an integer.'
 INCORRECT_INPUT = 'Incorrect input! Please look at the available modes.'
+INCORRECT_ID = 'Incorrect ID! Please look at the available IDs in the table above.'
 
 
 def validation_mode() -> int:
@@ -90,3 +91,21 @@ def validation_filename() -> str:
         print(f'Valid for read {filename = }.')
         logging.info(f'Valid for read {filename = }.')
         return filename
+
+
+def validation_id(data: dict) -> int:
+    """ Function for check user's input for id selection.
+        \nChecks user input and returns selected id of the note. """
+    available_ids = [data['notes'][i]['id'] for i in range(len(data['notes']))]
+    while True:
+        try:
+            selected_id = int(input("Enter id of the note: "))
+        except ValueError:
+            print(MUST_BE_INTEGER)
+            logging.exception(MUST_BE_INTEGER)
+            continue
+        if selected_id in available_ids:
+            logging.info(f'{selected_id = }')
+            return selected_id
+        print(INCORRECT_INPUT)
+        logging.exception(INCORRECT_INPUT)
