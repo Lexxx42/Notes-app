@@ -52,7 +52,7 @@ def choose_option(main_mode: int) -> None | tuple[int, int]:
 
 def ask_about_filename() -> str:
     """ This function is for UI for filename input. """
-    print("""From which file do you want to read notes?
+    print("""Please enter the filename.
 You can enter name of the file without extension,
 or press enter to use default filename: notes
 

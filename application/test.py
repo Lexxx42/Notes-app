@@ -55,7 +55,8 @@ data = load_from_file(DEFAULT_DIRNAME + DEFAULT_FILENAME)
 
 idx = [data['notes'][i]['id'] for i in range(len(data['notes']))]
 
-pt_print_id_date(data)
+
+# pt_print_id_date(data)
 
 
 def pt_print_id_selection(data_notes: dict, idx: int) -> None:
@@ -72,8 +73,7 @@ def pt_print_id_selection(data_notes: dict, idx: int) -> None:
         print(e)
 
 
-
-pt_print_id_selection(data, 12)
+# pt_print_id_selection(data, 12)
 
 
 def test(data, idx):
@@ -82,3 +82,7 @@ def test(data, idx):
             print('+')
         else:
             print('-')
+
+
+next_id = data['notes'][-1]['id']
+# print(next_id)

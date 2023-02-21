@@ -5,13 +5,14 @@
 \nmain_handler() - handles different handlers for operations available.
 \nhandler_for_read() - handles different operations for read mode.
 \nwait_for_continue() - waiting user to continue.
+\nhandler_for_add() - adding new note to the file.
 """
 
 from .logger import logging
 from .user_interface import main_menu, ask_about_filename, select_id_ui
 from .file_worker import write_to_file, load_from_file
 from .data_checker_and_filler import check_data_storage, generate_filename, DEFAULT_SRC
-from .pretty_print import pt_print_all, pt_print_filter_date, pt_print_id_date,\
+from .pretty_print import pt_print_all, pt_print_filter_date, pt_print_id_date, \
     pt_print_id_selection
 
 
@@ -32,6 +33,8 @@ def main_handler(operation_code: int) -> None:
     """ Function for selecting handler for operation. """
     if str(operation_code)[0] in ('1'):
         handler_for_read(operation_code)
+    elif str(operation_code)[0] in ('2'):
+        handler_for_add(operation_code)
 
 
 def handler_for_read(operation_code: int) -> None:
@@ -64,7 +67,21 @@ def handler_for_read(operation_code: int) -> None:
             wait_for_continue()
 
 
-def wait_for_continue() -> None:
-    """ Function to wait for user to continue. """
-    if input("Press Any key to continue: "):
-        return
+def handler_for_add(operation_code: int) -> None:
+    """ Function for add note operations. """
+    file_name_valid = ask_about_filename()
+    if not file_name_valid:
+        data_from_file = load_from_file(DEFAULT_SRC)
+    else:
+        data_from_file = load_from_file(generate_filename(file_name_valid))
+    add_note(data_from_file)
+    note_id = next_id = data['notes'][-1]['id']
+    note_title = ask_for_title()
+    note_data = ask_about_data()
+    date = date!
+    wait_for_continue()
+
+    def wait_for_continue() -> None:
+        """ Function to wait for user to continue. """
+        if input("Press Any key to continue: "):
+            return
