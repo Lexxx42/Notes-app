@@ -22,9 +22,9 @@ def pt_print_all(data_notes: dict) -> None:
             table.add_row([item[i] for i in table.field_names])
         print(table)
         logging.info('Notes printed as table in console.')
-    except TypeError as e:
-        print(e)
-        logging.exception(e)
+    except TypeError as err:
+        print(err)
+        logging.exception(err)
 
 
 def pt_print_filter_date(data_notes: dict) -> None:
@@ -38,9 +38,9 @@ def pt_print_filter_date(data_notes: dict) -> None:
         table.reversesort = True
         print(table)
         logging.info(SORTED_PRINT_TIP)
-    except TypeError as e:
-        print(e)
-        logging.exception(e)
+    except TypeError as err:
+        print(err)
+        logging.exception(err)
 
 
 def pt_print_id_date(data_notes: dict) -> None:
@@ -50,7 +50,8 @@ def pt_print_id_date(data_notes: dict) -> None:
         all_fields = list(data_notes["notes"][0].keys())
         table.field_names = [_ for _ in all_fields if _ in ['id', 'date']]
 
-        [table.add_row([item[i] for i in table.field_names]) for item in data_notes['notes']]
+        for item in data_notes["notes"]:
+            table.add_row([item[i] for i in table.field_names])
 
         table.sortby = "date"
         table.reversesort = True
@@ -67,8 +68,9 @@ def pt_print_id_selection(data_notes: dict, idx: int) -> None:
         table = PrettyTable()
         table.field_names = list(data_notes["notes"][0].keys())
 
-        [table.add_row([item[i] for i in table.field_names]
-                   ) for item in data_notes['notes'] if item.get('id') == idx]
+        for item in data_notes["notes"]:
+            if item.get('id') == idx:
+                table.add_row([item[i] for i in table.field_names])
 
         print(table)
         logging.info(SORTED_PRINT_TIP)
