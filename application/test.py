@@ -1,3 +1,4 @@
+"""Test."""
 import json
 from prettytable import PrettyTable
 
@@ -54,5 +55,30 @@ data = load_from_file(DEFAULT_DIRNAME + DEFAULT_FILENAME)
 
 idx = [data['notes'][i]['id'] for i in range(len(data['notes']))]
 
-print(idx)
 pt_print_id_date(data)
+
+
+def pt_print_id_selection(data_notes: dict, idx: int) -> None:
+    """ Print note with specific id to the console. """
+    try:
+        x = PrettyTable()
+        x.field_names = list(data_notes["notes"][0].keys())
+
+        [x.add_row([item[i] for i in x.field_names]
+                   ) for item in data_notes['notes'] if item.get('id') == idx]
+        print(x)
+
+    except TypeError as e:
+        print(e)
+
+
+
+pt_print_id_selection(data, 12)
+
+
+def test(data, idx):
+    for i in range(4):
+        if data['notes'][i].get('id') == idx:
+            print('+')
+        else:
+            print('-')

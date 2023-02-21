@@ -8,6 +8,7 @@
 \nvalidate_edit_note() - checks input for editing note.
 \nvalidate_save_note() - checks input for saving note.
 \nvalidate_delete_note() - checks input for deleting note.
+\validation_id() - checks input for id of the note.
 """
 
 from .logger import logging
@@ -15,7 +16,6 @@ from .logger import logging
 AVAILABLE_MODES_MAIN_MENU = 6
 MUST_BE_INTEGER = 'Incorrect input! Input must be an integer.'
 INCORRECT_INPUT = 'Incorrect input! Please look at the available modes.'
-INCORRECT_ID = 'Incorrect ID! Please look at the available IDs in the table above.'
 
 
 def validation_mode() -> int:
@@ -53,7 +53,7 @@ def validation_operation(main_menu_mode: int) -> int:
         case 5:
             return validate_delete_note()
         case _:
-            logging.WARNING(INCORRECT_INPUT)
+            logging.INFO(INCORRECT_INPUT)
 
 
 def validate_read() -> int:
@@ -107,5 +107,5 @@ def validation_id(data: dict) -> int:
         if selected_id in available_ids:
             logging.info(f'{selected_id = }')
             return selected_id
-        print(INCORRECT_INPUT)
-        logging.exception(INCORRECT_INPUT)
+        print('Incorrect ID! Please look at the available IDs in the table above.')
+        logging.exception('Incorrect ID! Please look at the available IDs in the table above.')

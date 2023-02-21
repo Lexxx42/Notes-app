@@ -4,7 +4,7 @@
 \nmain_menu() - main menu UI.
 \nchoose_option() - selection of operaton UI.
 \nask_about_filename() - filename input UI.
-\nselect_id_ui() - .
+\nselect_id_ui() - id selection UI.
 """
 
 import sys
