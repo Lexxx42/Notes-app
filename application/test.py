@@ -1,5 +1,6 @@
 """Test."""
 import json
+import time
 from prettytable import PrettyTable
 
 DEFAULT_DIRNAME = '../Data_store/'
@@ -55,7 +56,8 @@ data = load_from_file(DEFAULT_DIRNAME + DEFAULT_FILENAME)
 
 idx = [data['notes'][i]['id'] for i in range(len(data['notes']))]
 
-pt_print_id_date(data)
+
+# pt_print_id_date(data)
 
 
 def pt_print_id_selection(data_notes: dict, idx: int) -> None:
@@ -72,8 +74,7 @@ def pt_print_id_selection(data_notes: dict, idx: int) -> None:
         print(e)
 
 
-
-pt_print_id_selection(data, 12)
+# pt_print_id_selection(data, 12)
 
 
 def test(data, idx):
@@ -82,3 +83,26 @@ def test(data, idx):
             print('+')
         else:
             print('-')
+
+
+next_id = data['notes'][-1]['id']
+# print(next_id)
+
+from datetime import datetime
+
+
+# print(datetime.today().strftime('%d-%m-%Y'))
+
+# print(len("I need to buy some coconut milk for my coffee."))
+
+
+def fill_new_note(sourse: str, data: dict, note_id: int,
+                  note_title: str, note_data: str, date: str) -> tuple[dict, str]:
+    """ This functions fills data for a new note. """
+    new_note = fill_dict(('id', note_id), ('title', note_title), ('data', note_data), ('date', date))
+    return new_note
+
+
+def fill_dict(*args) -> dict:
+    """ This function creates new note as a dictionary. """
+    return {arg[0]: arg[1] for arg in args}

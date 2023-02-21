@@ -24,9 +24,9 @@ def validation_mode() -> int:
     while True:
         try:
             main_menu_mode = int(input('Which mode do you need: '))
-        except ValueError:
+        except ValueError as err:
             print(MUST_BE_INTEGER)
-            logging.exception(MUST_BE_INTEGER)
+            logging.exception(err)
             continue
         if main_menu_mode in range(AVAILABLE_MODES_MAIN_MENU):
             if main_menu_mode == 0:
@@ -45,7 +45,7 @@ def validation_operation(main_menu_mode: int) -> int:
         case 1:
             return validate_read()
         case 2:
-            return validate_add_note()
+            return 21
         case 3:
             return validate_edit_note()
         case 4:
@@ -62,10 +62,10 @@ def validate_read() -> int:
     number_of_available_modes = 4
     while True:
         try:
-            operation_type = int(input("Enter operation code: "))
-        except ValueError:
+            operation_type = int(input('Enter operation code: '))
+        except ValueError as err:
             print(MUST_BE_INTEGER)
-            logging.exception(MUST_BE_INTEGER)
+            logging.exception(err)
             continue
         if operation_type in range(number_of_available_modes):
             logging.info(f'Operation code for read = {operation_type + 10}')
@@ -79,10 +79,10 @@ def validation_filename() -> str:
     \nChecks user input and returns filename. """
     while True:
         try:
-            filename = input("Enter filename: ").strip()
-        except Exception:
-            print("Something went wrong when reading filename. Try again.")
-            logging.exception("Something went wrong when reading filename.")
+            filename = input('Enter filename: ').strip()
+        except Exception as err:
+            print('Something went wrong when reading filename. Try again.')
+            logging.exception(err)
             continue
         if not filename:
             print('Reading default file.')
@@ -99,17 +99,34 @@ def validation_id(data: dict) -> int:
     while True:
         try:
             available_ids = [data['notes'][i]['id'] for i in range(len(data['notes']))]
-            selected_id = int(input("Enter id of the note: "))
-        except ValueError:
+            selected_id = int(input('Enter id of the note: '))
+        except ValueError as err:
             print(MUST_BE_INTEGER)
-            logging.exception(MUST_BE_INTEGER)
+            logging.exception(err)
             continue
-        except TypeError:
+        except TypeError as error:
             print('Corrupted data file.')
-            logging.exception(MUST_BE_INTEGER)
+            logging.exception(error)
             return -1
         if selected_id in available_ids:
             logging.info(f'{selected_id = }')
             return selected_id
         print('Incorrect ID! Please look at the available IDs in the table above.')
         logging.exception('Incorrect ID! Please look at the available IDs in the table above.')
+
+
+def validation_data(max_symbols: int) -> str:
+    """ Function for check user's input for note filling.
+        \nChecks user input and returns string. """
+    while True:
+        try:
+            fill_data = input(f'Type something. Max {max_symbols} characters: ')
+        except Exception as err:
+            print('Something went wrong when collecting data. Try again.')
+            logging.exception(err)
+            continue
+        if len(fill_data) in range(max_symbols + 1):
+            logging.info(f'Entered data for note {fill_data = } with length = {len(fill_data)}.')
+            return fill_data
+        print(f'Max characters is {max_symbols}.')
+        logging.info(f'Entered data for note {fill_data = } with length = {len(fill_data)}.')

@@ -1,3 +1,5 @@
+""" This module configures the logging. """
+
 import logging
 
 logging.basicConfig(
@@ -5,7 +7,7 @@ logging.basicConfig(
     datefmt='%d-%m-%Y %H:%M:%S',
     handlers=[
         logging.FileHandler('notes_log.log', mode='a'),
-        #logging.StreamHandler()
-        ],
+        # logging.StreamHandler()
+    ],
     level=logging.INFO,
 )
