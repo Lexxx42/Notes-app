@@ -62,7 +62,7 @@ def validate_read() -> int:
     number_of_available_modes = 4
     while True:
         try:
-            operation_type = int(input("Enter operation code: "))
+            operation_type = int(input('Enter operation code: '))
         except ValueError:
             print(MUST_BE_INTEGER)
             logging.exception(MUST_BE_INTEGER)
@@ -79,9 +79,9 @@ def validation_filename() -> str:
     \nChecks user input and returns filename. """
     while True:
         try:
-            filename = input("Enter filename: ").strip()
+            filename = input('Enter filename: ').strip()
         except Exception:
-            print("Something went wrong when reading filename. Try again.")
+            print('Something went wrong when reading filename. Try again.')
             logging.exception("Something went wrong when reading filename.")
             continue
         if not filename:
@@ -99,7 +99,7 @@ def validation_id(data: dict) -> int:
     while True:
         try:
             available_ids = [data['notes'][i]['id'] for i in range(len(data['notes']))]
-            selected_id = int(input("Enter id of the note: "))
+            selected_id = int(input('Enter id of the note: '))
         except ValueError:
             print(MUST_BE_INTEGER)
             logging.exception(MUST_BE_INTEGER)
@@ -113,3 +113,8 @@ def validation_id(data: dict) -> int:
             return selected_id
         print('Incorrect ID! Please look at the available IDs in the table above.')
         logging.exception('Incorrect ID! Please look at the available IDs in the table above.')
+
+def validation_title(max_symbols: int) -> str:
+    return
+
+

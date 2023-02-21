@@ -8,8 +8,9 @@
 \nhandler_for_add() - adding new note to the file.
 """
 
+from datetime import datetime
 from .logger import logging
-from .user_interface import main_menu, ask_about_filename, select_id_ui
+from .user_interface import main_menu, ask_about_filename, select_id_ui, ask_for_title, ask_about_data
 from .file_worker import write_to_file, load_from_file
 from .data_checker_and_filler import check_data_storage, generate_filename, DEFAULT_SRC
 from .pretty_print import pt_print_all, pt_print_filter_date, pt_print_id_date, \
@@ -78,10 +79,10 @@ def handler_for_add(operation_code: int) -> None:
     note_id = next_id = data['notes'][-1]['id']
     note_title = ask_for_title()
     note_data = ask_about_data()
-    date = date!
+    date = datetime.today().strftime('%d-%m-%Y')
     wait_for_continue()
 
     def wait_for_continue() -> None:
         """ Function to wait for user to continue. """
-        if input("Press Any key to continue: "):
+        if input('Press any key to continue: '):
             return

@@ -5,10 +5,15 @@
 \nchoose_option() - selection of operaton UI.
 \nask_about_filename() - filename input UI.
 \nselect_id_ui() - id selection UI.
+\nask_for_title() - asking for note title UI.
+\nask_about_data() - asking for note data UI.
 """
 
 import sys
 from .validator import validation_mode, validation_operation, validation_filename, validation_id
+
+MAX_SYMBOLS_TITLE = 25
+MAX_SYMBOLS_DATA = 50
 
 
 def main_menu() -> None | tuple[int, int]:
@@ -67,3 +72,19 @@ def select_id_ui(data: dict) -> int:
 Available ids are presented in the table above.
 """)
     return validation_id(data)
+
+
+def ask_for_title() -> str:
+    """ This function is for title getting from user. """
+    print(f"""What title do you want for your note?
+Maximum number of symbols is {MAX_SYMBOLS_TITLE}
+""")
+    return validation_title(MAX_SYMBOLS_TITLE)
+
+
+def ask_about_data() -> str:
+    """ This function is for data getting from user. """
+    print(f"""Type something to your note
+Maximum number of symbols is {MAX_SYMBOLS_DATA}
+""")
+    return validation_data(MAX_SYMBOLS_DATA)

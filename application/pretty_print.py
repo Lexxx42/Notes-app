@@ -17,8 +17,8 @@ def pt_print_all(data_notes: dict) -> None:
     """ Print all notes to the console. """
     try:
         table = PrettyTable()
-        table.field_names = list(data_notes["notes"][0].keys())
-        for item in data_notes["notes"]:
+        table.field_names = list(data_notes['notes'][0].keys())
+        for item in data_notes['notes']:
             table.add_row([item[i] for i in table.field_names])
         print(table)
         logging.info('Notes printed as table in console.')
@@ -31,10 +31,10 @@ def pt_print_filter_date(data_notes: dict) -> None:
     """ Print all notes to the console sorted by date (DECS order). """
     try:
         table = PrettyTable()
-        table.field_names = list(data_notes["notes"][0].keys())
-        for item in data_notes["notes"]:
+        table.field_names = list(data_notes['notes'][0].keys())
+        for item in data_notes['notes']:
             table.add_row([item[i] for i in table.field_names])
-        table.sortby = "date"
+        table.sortby = 'date'
         table.reversesort = True
         print(table)
         logging.info(SORTED_PRINT_TIP)
@@ -47,13 +47,13 @@ def pt_print_id_date(data_notes: dict) -> None:
     """ Print all note id's and last edited date to the console. """
     try:
         table = PrettyTable()
-        all_fields = list(data_notes["notes"][0].keys())
+        all_fields = list(data_notes['notes'][0].keys())
         table.field_names = [_ for _ in all_fields if _ in ['id', 'date']]
 
-        for item in data_notes["notes"]:
+        for item in data_notes['notes']:
             table.add_row([item[i] for i in table.field_names])
 
-        table.sortby = "date"
+        table.sortby = 'date'
         table.reversesort = True
         print(table)
         logging.info(SORTED_PRINT_TIP)
@@ -66,9 +66,9 @@ def pt_print_id_selection(data_notes: dict, idx: int) -> None:
     """ Print note with specific id to the console. """
     try:
         table = PrettyTable()
-        table.field_names = list(data_notes["notes"][0].keys())
+        table.field_names = list(data_notes['notes'][0].keys())
 
-        for item in data_notes["notes"]:
+        for item in data_notes['notes']:
             if item.get('id') == idx:
                 table.add_row([item[i] for i in table.field_names])
 

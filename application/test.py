@@ -1,5 +1,6 @@
 """Test."""
 import json
+import time
 from prettytable import PrettyTable
 
 DEFAULT_DIRNAME = '../Data_store/'
@@ -86,3 +87,9 @@ def test(data, idx):
 
 next_id = data['notes'][-1]['id']
 # print(next_id)
+
+from datetime import datetime
+
+# print(datetime.today().strftime('%d-%m-%Y'))
+
+print(len("I need to buy some coconut milk for my coffee."))
