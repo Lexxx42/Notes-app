@@ -96,14 +96,18 @@ def validation_filename() -> str:
 def validation_id(data: dict) -> int:
     """ Function for check user's input for id selection.
         \nChecks user input and returns selected id of the note. """
-    available_ids = [data['notes'][i]['id'] for i in range(len(data['notes']))]
     while True:
         try:
+            available_ids = [data['notes'][i]['id'] for i in range(len(data['notes']))]
             selected_id = int(input("Enter id of the note: "))
         except ValueError:
             print(MUST_BE_INTEGER)
             logging.exception(MUST_BE_INTEGER)
             continue
+        except TypeError:
+            print('Corrupted data file.')
+            logging.exception(MUST_BE_INTEGER)
+            return -1
         if selected_id in available_ids:
             logging.info(f'{selected_id = }')
             return selected_id
