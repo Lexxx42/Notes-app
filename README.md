@@ -20,16 +20,16 @@ Notes app (Python)
 - [x] [Create Test Data] : create JSON with some data
 - [x] [Create Dir for data] : creation of directory for data storage
 - [x] [Generate Data] : generate some data when app starting
-- [ ] [Read from file] : read data from json file
+- [x] [Read from file] : read data from json file
 - [x] [Module pretty_print] : prints data to console
 - [ ] [UI] : all menus
 - [ ] [Validation] : validate the data input from user
 - [x] [Logging] : logging module
 - [ ] [Logging] : logging in app
 - [x] [Filtration by date] : filter notes by date when reading from file
-- [ ] [Save note] : save data to file
+- [ ] [Save notes] : save data to file
 - [x] [Print all] : print all notes to console
-- [ ] [Print selected] : print selected note to console
+- [x] [Print selected] : print selected note to console
 - [ ] [Add note] : add new note to file
 - [ ] [Delete note] : delete note from file
 - [ ] [Edit note] : edit selected note
