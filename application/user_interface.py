@@ -1,9 +1,18 @@
+"""
+\nThis module operates UI of the app.
+\nAvailable methods:
+\nmain_menu() - main menu UI.
+\nchoose_option() - selection of operaton UI.
+\nask_about_filename() - filename input UI.
+\nselect_id_ui() - id selection UI.
+"""
+
 import sys
-from .validator import validation_mode, validation_operation, validation_filename
+from .validator import validation_mode, validation_operation, validation_filename, validation_id
 
 
 def main_menu() -> None | tuple[int, int]:
-    """ This function is for main menu of prison interface. """
+    """ This function is for main menu interface. """
     print("""Notes app. Manage your notes in single place.
 
 
@@ -38,11 +47,11 @@ def choose_option(main_mode: int) -> None | tuple[int, int]:
             operation = validation_operation(main_mode)
     if operation in [10]:
         return main_menu()
-    else:
-        return main_mode, operation
+    return main_mode, operation
 
 
 def ask_about_filename() -> str:
+    """ This function is for UI for filename input. """
     print("""From which file do you want to read notes?
 You can enter name of the file without extension,
 or press enter to use default filename: notes
@@ -50,3 +59,11 @@ or press enter to use default filename: notes
 Extension of the file must be .json
 """)
     return validation_filename()
+
+
+def select_id_ui(data: dict) -> int:
+    """ This function is for id selection UI. """
+    print("""Please enter id of the note you want to select.
+Available ids are presented in the table above.
+""")
+    return validation_id(data)

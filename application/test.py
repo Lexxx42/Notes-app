@@ -1,3 +1,4 @@
+"""Test."""
 import json
 from prettytable import PrettyTable
 
@@ -14,8 +15,8 @@ def load_from_file(filename):
 def prettytable_print_all(data_notes):
     try:
         x = PrettyTable()
-        x.field_names = list(data_notes["notes"][0].keys())
-        for item in data_notes["notes"]:
+        x.field_names = list(data_notes['notes'][0].keys())
+        for item in data_notes['notes']:
             x.add_row([item[i] for i in x.field_names])
         print(x)
     except TypeError as e:
@@ -25,10 +26,25 @@ def prettytable_print_all(data_notes):
 def prettytable_print_sorted(data_notes):
     try:
         x = PrettyTable()
-        x.field_names = list(data_notes["notes"][0].keys())
-        for item in data_notes["notes"]:
+        x.field_names = list(data_notes['notes'][0].keys())
+        for item in data_notes['notes']:
             x.add_row([item[i] for i in x.field_names])
-        x.sortby = "date"
+        x.sortby = 'date'
+        x.reversesort = True
+        print(x)
+    except TypeError as e:
+        print(e)
+
+
+def pt_print_id_date(data_notes: dict) -> None:
+    try:
+        x = PrettyTable()
+        all_fields = list(data_notes['notes'][0].keys())
+
+        x.field_names = [_ for _ in all_fields if _ in ['id', 'date']]
+        [x.add_row([item[i] for i in x.field_names]) for item in data_notes['notes']]
+
+        x.sortby = 'date'
         x.reversesort = True
         print(x)
     except TypeError as e:
@@ -36,4 +52,33 @@ def prettytable_print_sorted(data_notes):
 
 
 data = load_from_file(DEFAULT_DIRNAME + DEFAULT_FILENAME)
-prettytable_print_sorted(data)
+
+idx = [data['notes'][i]['id'] for i in range(len(data['notes']))]
+
+pt_print_id_date(data)
+
+
+def pt_print_id_selection(data_notes: dict, idx: int) -> None:
+    """ Print note with specific id to the console. """
+    try:
+        x = PrettyTable()
+        x.field_names = list(data_notes["notes"][0].keys())
+
+        [x.add_row([item[i] for i in x.field_names]
+                   ) for item in data_notes['notes'] if item.get('id') == idx]
+        print(x)
+
+    except TypeError as e:
+        print(e)
+
+
+
+pt_print_id_selection(data, 12)
+
+
+def test(data, idx):
+    for i in range(4):
+        if data['notes'][i].get('id') == idx:
+            print('+')
+        else:
+            print('-')
