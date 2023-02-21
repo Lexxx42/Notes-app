@@ -7,10 +7,11 @@
 \nselect_id_ui() - id selection UI.
 \nask_for_title() - asking for note title UI.
 \nask_about_data() - asking for note data UI.
+\nnote_added_ui() - add note notificaton UI.
 """
 
 import sys
-from .validator import validation_mode, validation_operation, validation_filename, validation_id
+from .validator import validation_mode, validation_operation, validation_filename, validation_id, validation_data
 
 MAX_SYMBOLS_TITLE = 25
 MAX_SYMBOLS_DATA = 50
@@ -40,16 +41,15 @@ Working with:
 
 def choose_option(main_mode: int) -> None | tuple[int, int]:
     """ This function is for available operations for chosen mode. """
-    match main_mode:
-        case 1:
-            print("""Options for reading notes
+    if main_mode in [1]:
+        print("""Options for reading notes
 1 - print all notes to the console
 2 - print all notes filtered by date
 3 - print selected note to the console
 
 0 - previous menu
 """)
-            operation = validation_operation(main_mode)
+    operation = validation_operation(main_mode)
     if operation in [10]:
         return main_menu()
     return main_mode, operation
@@ -79,7 +79,7 @@ def ask_for_title() -> str:
     print(f"""What title do you want for your note?
 Maximum number of symbols is {MAX_SYMBOLS_TITLE}
 """)
-    return validation_title(MAX_SYMBOLS_TITLE)
+    return validation_data(MAX_SYMBOLS_TITLE)
 
 
 def ask_about_data() -> str:
@@ -88,3 +88,8 @@ def ask_about_data() -> str:
 Maximum number of symbols is {MAX_SYMBOLS_DATA}
 """)
     return validation_data(MAX_SYMBOLS_DATA)
+
+
+def note_added_ui() -> None:
+    """ This function is for notification about adding a note. """
+    print('New note added!')
