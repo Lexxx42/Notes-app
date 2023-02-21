@@ -47,8 +47,7 @@ def choose_option(main_mode: int) -> None | tuple[int, int]:
             operation = validation_operation(main_mode)
     if operation in [10]:
         return main_menu()
-    else:
-        return main_mode, operation
+    return main_mode, operation
 
 
 def ask_about_filename() -> str:
