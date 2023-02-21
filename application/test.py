@@ -35,5 +35,21 @@ def prettytable_print_sorted(data_notes):
         print(e)
 
 
+def pt_print_id_date(data_notes: dict) -> None:
+    try:
+        x = PrettyTable()
+        all_fields = list(data_notes["notes"][0].keys())
+
+        x.field_names = [_ for _ in all_fields if _ in ['id', 'date']]
+
+        for item in data_notes["notes"]:
+            x.add_row([item[i] for i in x.field_names])
+        x.sortby = "date"
+        x.reversesort = True
+        print(x)
+    except TypeError as e:
+        print(e)
+
+
 data = load_from_file(DEFAULT_DIRNAME + DEFAULT_FILENAME)
-prettytable_print_sorted(data)
+pt_print_id_date(data)
