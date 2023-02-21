@@ -30,7 +30,7 @@ Notes app (Python)
 - [ ] [Save notes] : save data to file
 - [x] [Print all] : print all notes to console
 - [x] [Print selected] : print selected note to console
-- [ ] [Add note] : add new note to file
+- [x] [Add note] : add new note to file
 - [ ] [Delete note] : delete note from file
 - [ ] [Edit note] : edit selected note
 - [ ] [Module docs] : module documentation
