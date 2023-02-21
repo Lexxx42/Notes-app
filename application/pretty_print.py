@@ -1,9 +1,9 @@
 """
 This module uses the PrettyTable library to print notes to the console.
-Available methods:
-pt_print_all() - prints all notes.
-pt_print_filter_date() - prints all notes filtered by date (DESC order).
-pt_print_id_date() - prints note id's and last modified date.
+\nAvailable methods:
+\npt_print_all() - prints all notes.
+\npt_print_filter_date() - prints all notes filtered by date (DESC order).
+\npt_print_id_date() - prints note id's and last modified date.
 """
 
 from prettytable import PrettyTable
@@ -11,7 +11,7 @@ from .logger import logging
 
 
 def pt_print_all(data_notes: dict) -> None:
-    """Print all notes to the console."""
+    """ Print all notes to the console. """
     try:
         x = PrettyTable()
         x.field_names = list(data_notes["notes"][0].keys())
@@ -25,7 +25,7 @@ def pt_print_all(data_notes: dict) -> None:
 
 
 def pt_print_filter_date(data_notes: dict) -> None:
-    """Print all notes to the console sorted by date (DECS order)."""
+    """ Print all notes to the console sorted by date (DECS order). """
     try:
         x = PrettyTable()
         x.field_names = list(data_notes["notes"][0].keys())
@@ -41,7 +41,7 @@ def pt_print_filter_date(data_notes: dict) -> None:
 
 
 def pt_print_id_date(data_notes: dict) -> None:
-    """Print all note id's and last edited date to the console."""
+    """ Print all note id's and last edited date to the console. """
     try:
         x = PrettyTable()
         all_fields = list(data_notes["notes"][0].keys())

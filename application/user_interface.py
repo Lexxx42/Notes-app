@@ -1,9 +1,17 @@
+"""
+\nThis module operates UI of the app.
+\nAvailable methods:
+\nmain_menu() - main menu UI.
+\nchoose_option() - selection of operaton UI.
+\nask_about_filename() - filename input UI.
+"""
+
 import sys
 from .validator import validation_mode, validation_operation, validation_filename
 
 
 def main_menu() -> None | tuple[int, int]:
-    """ This function is for main menu of prison interface. """
+    """ This function is for main menu interface. """
     print("""Notes app. Manage your notes in single place.
 
 
@@ -43,6 +51,7 @@ def choose_option(main_mode: int) -> None | tuple[int, int]:
 
 
 def ask_about_filename() -> str:
+    """ This function is for UI for filename input. """
     print("""From which file do you want to read notes?
 You can enter name of the file without extension,
 or press enter to use default filename: notes

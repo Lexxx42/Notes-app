@@ -1,8 +1,17 @@
+"""
+\nThis module operates work with files.
+\nAvailable methods:
+\nwrite_to_file() - writing memory to the file.
+\nload_from_file() - loading data from file to the memory.
+"""
+
+
 import json
 from .logger import logging
 
 
 def write_to_file(data: dict, filename: str) -> None:
+    """ This function is for writing data to the file. """
     try:
         with open(filename, 'w', encoding='utf-8') as file_json:
             json.dump(data, file_json, ensure_ascii=False)
@@ -19,6 +28,7 @@ def write_to_file(data: dict, filename: str) -> None:
 
 
 def load_from_file(filename: str) -> dict:
+    """ This function is for loading data from the file. """
     try:
         with open(filename, encoding='utf-8') as file:
             data = json.load(file)

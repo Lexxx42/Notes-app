@@ -1,3 +1,15 @@
+"""
+\nThis module validates all user input data.
+\nAvailable methods:
+\nvalidation_mode() - checks input for main menu mode.
+\nvalidation_operation() - checks input for operation mode.
+\nvalidate_read() - checks input for reading data.
+\nvalidate_add_note - checks input for adding note.
+\nvalidate_edit_note() - checks input for editing note.
+\nvalidate_save_note() - checks input for saving note.
+\nvalidate_delete_note() - checks input for deleting note.
+"""
+
 from .logger import logging
 
 AVAILABLE_MODES_MAIN_MENU = 6
@@ -7,8 +19,7 @@ INCORRECT_INPUT = 'Incorrect input! Please look at the available modes.'
 
 def validation_mode() -> int:
     """ Function for check user's input from main mode.
-    \nChecks user input and returns main menu mode.
-    """
+    \nChecks user input and returns main menu mode. """
     while True:
         try:
             main_menu_mode = int(input('Which mode do you need: '))
@@ -28,7 +39,7 @@ def validation_mode() -> int:
 
 def validation_operation(main_menu_mode: int) -> int:
     """ Function for check user's input for operation mode.
-    \nChecks user input and returns operation mode."""
+    \nChecks user input and returns operation mode. """
     match main_menu_mode:
         case 1:
             return validate_read()
@@ -45,6 +56,8 @@ def validation_operation(main_menu_mode: int) -> int:
 
 
 def validate_read() -> int:
+    """ Function for check user's input for reading operation type.
+    \nChecks user input and returns operation type. """
     number_of_available_modes = 4
     while True:
         try:
@@ -54,24 +67,26 @@ def validate_read() -> int:
             logging.exception(MUST_BE_INTEGER)
             continue
         if operation_type in range(number_of_available_modes):
-            logging.info(f'operation code for read = {operation_type + 10}')
+            logging.info(f'Operation code for read = {operation_type + 10}')
             return operation_type + 10
         print(INCORRECT_INPUT)
         logging.exception(INCORRECT_INPUT)
 
 
 def validation_filename() -> str:
+    """ Function for check user's input for filename.
+    \nChecks user input and returns filename. """
     while True:
         try:
             filename = input("Enter filename: ").strip()
-        except BaseException:
+        except Exception:
             print("Something went wrong when reading filename. Try again.")
             logging.exception("Something went wrong when reading filename.")
             continue
         if not filename:
-            print('reading default file.')
-            logging.info('reading default file.')
+            print('Reading default file.')
+            logging.info('Reading default file.')
             return filename
-        print(f'valid for read {filename = }.')
-        logging.info(f'valid for read {filename = }.')
+        print(f'Valid for read {filename = }.')
+        logging.info(f'Valid for read {filename = }.')
         return filename
