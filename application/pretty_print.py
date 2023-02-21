@@ -2,7 +2,7 @@ from prettytable import PrettyTable
 from .logger import logging
 
 
-def prettytable_print_all(data_notes):
+def pt_print_all(data_notes: dict) -> None:
     try:
         x = PrettyTable()
         x.field_names = list(data_notes["notes"][0].keys())
@@ -10,6 +10,21 @@ def prettytable_print_all(data_notes):
             x.add_row([item[i] for i in x.field_names])
         print(x)
         logging.info('Notes printed as table in console.')
+    except TypeError as e:
+        print(e)
+        logging.exception(e)
+
+
+def pt_print_filter_date(data_notes: dict) -> None:
+    try:
+        x = PrettyTable()
+        x.field_names = list(data_notes["notes"][0].keys())
+        for item in data_notes["notes"]:
+            x.add_row([item[i] for i in x.field_names])
+        x.sortby = "date"
+        x.reversesort = True
+        print(x)
+        logging.info('Sorted by date notes printed as table in console.')
     except TypeError as e:
         print(e)
         logging.exception(e)

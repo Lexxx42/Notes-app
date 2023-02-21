@@ -26,7 +26,7 @@ Notes app (Python)
 - [ ] [Validation] : validate the data input from user
 - [x] [Logging] : logging module
 - [ ] [Logging] : logging in app
-- [ ] [Filtration by date] : filter notes by date when reading from file
+- [x] [Filtration by date] : filter notes by date when reading from file
 - [ ] [Save note] : save data to file
 - [x] [Print all] : print all notes to console
 - [ ] [Print selected] : print selected note to console
@@ -45,7 +45,9 @@ Notes app (Python)
 3) user_interface.py - main menu of the app
 4) validator.py - validator of input data
 5) file_worker.py - work with file (read, edit, save, delete)
-6) logger.py - logging module
-7) Data_store/ - directory for JSON file with notes
+6) pretty_print.py - printer to te console
+7) logger.py - logging module
+8) Data_store/ - directory for JSON file with notes
+9) data_checker_and_filler.py - checker for files and directories to exist
 
 ![structure.png](structure.png)

@@ -11,11 +11,29 @@ def load_from_file(filename):
     return data
 
 
+def prettytable_print_all(data_notes):
+    try:
+        x = PrettyTable()
+        x.field_names = list(data_notes["notes"][0].keys())
+        for item in data_notes["notes"]:
+            x.add_row([item[i] for i in x.field_names])
+        print(x)
+    except TypeError as e:
+        print(e)
+
+
+def prettytable_print_sorted(data_notes):
+    try:
+        x = PrettyTable()
+        x.field_names = list(data_notes["notes"][0].keys())
+        for item in data_notes["notes"]:
+            x.add_row([item[i] for i in x.field_names])
+        x.sortby = "date"
+        x.reversesort = True
+        print(x)
+    except TypeError as e:
+        print(e)
+
+
 data = load_from_file(DEFAULT_DIRNAME + DEFAULT_FILENAME)
-
-x = PrettyTable()
-x.field_names = list(data["notes"][0].keys())
-for item in data["notes"]:
-    x.add_row([item[i] for i in x.field_names])
-
-print(x)
+prettytable_print_sorted(data)

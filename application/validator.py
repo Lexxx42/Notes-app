@@ -26,7 +26,7 @@ def validation_mode() -> int:
         logging.exception(INCORRECT_INPUT)
 
 
-def validation_operation(main_menu_mode) -> int:
+def validation_operation(main_menu_mode: int) -> int:
     """ Function for check user's input for operation mode.
     \nChecks user input and returns operation mode."""
     match main_menu_mode:
@@ -44,7 +44,7 @@ def validation_operation(main_menu_mode) -> int:
             logging.WARNING(INCORRECT_INPUT)
 
 
-def validate_read():
+def validate_read() -> int:
     number_of_available_modes = 4
     while True:
         try:
@@ -60,7 +60,7 @@ def validate_read():
         logging.exception(INCORRECT_INPUT)
 
 
-def validation_filename():
+def validation_filename() -> str:
     while True:
         try:
             filename = input("Enter filename: ").strip()
