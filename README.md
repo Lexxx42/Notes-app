@@ -1,5 +1,5 @@
 # Notes-app
-Notes app (Python)
+Console app for managing notes
 
 (🌟colorful info about the app🌟)
 
