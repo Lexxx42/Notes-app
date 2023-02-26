@@ -53,7 +53,7 @@ def validation_operation(main_menu_mode: int) -> int:
         case 4:
             return 41
         case 5:
-            return validate_delete_note()
+            return 51
         case _:
             logging.INFO(INCORRECT_INPUT)
 
@@ -119,8 +119,8 @@ def validation_id(data: dict) -> int:
             return -1
         except KeyError as error:
             print(NO_VALID_FILE)
-            break;
             logging.exception(error)
+            break;
         print('Incorrect ID! Please look at the available IDs in the table above.')
         logging.exception('Incorrect ID! Please look at the available IDs in the table above.')
 
