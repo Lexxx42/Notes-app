@@ -77,12 +77,12 @@ def pt_print_id_selection(data_notes: dict, idx: int) -> None:
 # pt_print_id_selection(data, 12)
 
 
-def test(data, idx):
-    for i in range(4):
-        if data['notes'][i].get('id') == idx:
-            print('+')
-        else:
-            print('-')
+# def test(data, idx):
+#     for i in range(4):
+#         if data['notes'][i].get('id') == idx:
+#             print('+')
+#         else:
+#             print('-')
 
 
 next_id = data['notes'][-1]['id']
@@ -106,3 +106,14 @@ def fill_new_note(source: str, data: dict, note_id: int,
 def fill_dict(*args) -> dict:
     """ This function creates new note as a dictionary. """
     return {arg[0]: arg[1] for arg in args}
+
+
+
+def test(data, idx):
+    for i in range(len(data['notes'])):
+        if data['notes'][i].get('id') == idx:
+            print(data['notes'][i]['title'])
+            data['notes'][i]['title'] = 'huy'
+            print(data['notes'][i]['title'])
+
+test(data, 2)

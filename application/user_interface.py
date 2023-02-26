@@ -11,7 +11,9 @@
 \nask_about_filename_for_read() - asking for note data filename for read UI.
 \nask_about_filename_for_save() - asking for note data filename for save UI.
 \ndata_saved() - telling user about saved data UI.
-ask_about_data_edit() - asking for data to edit the note UI.
+\nask_about_data_edit() - asking for data to edit a note UI.
+\nedit_title_note_ui() - asking for new title for a note UI.
+\nedit_data_note_ui() - asking for new data for a note UI.
 """
 
 import sys
@@ -136,7 +138,7 @@ You'll find the data in the following source:
 """)
 
 
-def ask_about_data_edit() -> None:
+def ask_about_data_edit() -> int:
     """ This function is for UI for filename for saving data. """
     print("""Options for edit
 1 - edit title
@@ -148,3 +150,21 @@ def ask_about_data_edit() -> None:
     if operation in [30]:
         return main_menu()
     return operation
+
+
+def edit_title_note_ui(data: dict) -> str:
+    """ This function is for new title for note. """
+    print("""Enter the new title for note.
+
+Only numbers and letters are allowed.
+""")
+    return validation_data(MAX_SYMBOLS_TITLE)
+
+
+def edit_data_note_ui(data: dict) -> str:
+    """ This function is for new data for note. """
+    print("""Enter the new data for note.
+
+Only numbers and letters are allowed.
+""")
+    return validation_data(MAX_SYMBOLS_DATA)
