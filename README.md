@@ -1,11 +1,21 @@
 # Notes-app
+
 Console app for managing notes
 
-(🌟colorful info about the app🌟)
+---
+
+🌟 This application has following functionality:
+
+- Reading notes from a file
+- Adding notes to a file
+- Editing notes from a file
+- Saving notes to a file
+- Deleting notes from a file
 
 ---
 
 ## How to use Notes app
+
 1. Clone repository to your machine ```git clone *REP_LINK*```
 2. Install python 3.11: [Python](https://www.python.org/downloads/)
 3. Check if pip is installed on your machine ```pip --version```
@@ -15,6 +25,7 @@ Console app for managing notes
 ---
 
 ## TODO:
+
 - [x] [UI] : create UI, main menu
 - [x] [Requirements] : create requirements.txt
 - [x] [Create Test Data] : create JSON with some data
@@ -34,12 +45,13 @@ Console app for managing notes
 - [x] [Delete note] : delete note from file
 - [x] [Edit note] : edit selected note
 - [x] [Module docs] : module documentation
-- [ ] [Function docs] : function documentation
-- [ ] [README] : edit readme documentation
+- [x] [Function docs] : function documentation
+- [x] [README] : edit readme documentation
 
 ---
 
 ### Project structure
+
 1) app.py - app entrance point
 2) main.py - controller
 3) user_interface.py - main menu of the app
