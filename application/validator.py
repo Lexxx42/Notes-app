@@ -8,7 +8,8 @@
 \nvalidate_edit_note() - checks input for editing note.
 \nvalidate_save_note() - checks input for saving note.
 \nvalidate_delete_note() - checks input for deleting note.
-\validation_id() - checks input for id of the note.
+\nalidation_id() - checks input for id of the note.
+\nvalidate_edit() - checks input for editing mode.
 """
 
 from .logger import logging
@@ -17,6 +18,7 @@ AVAILABLE_MODES_MAIN_MENU = 6
 MUST_BE_INTEGER = 'Incorrect input! Input must be an integer.'
 INCORRECT_INPUT = 'Incorrect input! Please look at the available modes.'
 NO_VALID_FILE = 'No valid file for reading.'
+
 
 def validation_mode() -> int:
     """ Function for check user's input from main mode.
@@ -47,7 +49,7 @@ def validation_operation(main_menu_mode: int) -> int:
         case 2:
             return 21
         case 3:
-            return validate_edit_note()
+            return 31
         case 4:
             return 41
         case 5:
@@ -138,3 +140,21 @@ def validation_data(max_symbols: int) -> str:
             return fill_data
         print(f'Max characters is {max_symbols}.')
         logging.info(f'Entered data for note {fill_data = } with length = {len(fill_data)}.')
+
+
+def validate_edit() -> int:
+    """ Function for check user's input for editing the note operation type.
+    \nChecks user input and returns operation type. """
+    number_of_available_modes = 3
+    while True:
+        try:
+            operation_type = int(input('Enter operation code: '))
+        except ValueError as err:
+            print(MUST_BE_INTEGER)
+            logging.exception(err)
+            continue
+        if operation_type in range(number_of_available_modes):
+            logging.info(f'Operation code for read = {operation_type + 30}')
+            return operation_type + 30
+        print(INCORRECT_INPUT)
+        logging.exception(INCORRECT_INPUT)

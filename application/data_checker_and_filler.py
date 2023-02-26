@@ -7,6 +7,9 @@
 \nfill_notes() - filling test note data.
 \nfill_new_note() - adds new note to the data.
 \nfill_dict() - combines set of data to the note.
+\nupdate_note() - chooses update mode for a note.
+\nupdate_title() - updates title of a note.
+\nupdate_data() - updates data of a note.
 """
 
 from os import path, makedirs
@@ -88,3 +91,27 @@ def fill_new_note(data: dict, note_id: int,
 def fill_dict(*args: Any) -> dict:
     """ This function creates new note as a dictionary. """
     return {arg[0]: arg[1] for arg in args}
+
+
+def update_note(mode: int, data: str, notes: dict, id_note: int) -> dict:
+    """ This function chooses a editing mode for a note. """
+    if mode in [31]:
+        return update_title(data, notes, id_note)
+    elif mode in [32]:
+        return update_data(data, notes, id_note)
+
+
+def update_title(new_title: str, notes: dict, id_note: int) -> dict:
+    """ This function updates title for a note. """
+    for i in range(len(notes['notes'])):
+        if notes['notes'][i].get('id') == id_note:
+            notes['notes'][i]['title'] = new_title
+            return notes
+
+
+def update_data(new_data: str, notes: dict, id_note: int) -> dict:
+    """ This function updates data for a note. """
+    for i in range(len(notes['notes'])):
+        if notes['notes'][i].get('id') == id_note:
+            notes['notes'][i]['data'] = new_data
+            return notes
