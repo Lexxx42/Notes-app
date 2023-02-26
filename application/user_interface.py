@@ -14,6 +14,7 @@
 \nask_about_data_edit() - asking for data to edit a note UI.
 \nedit_title_note_ui() - asking for new title for a note UI.
 \nedit_data_note_ui() - asking for new data for a note UI.
+\ndata_deleted() - telling user about deleted data UI.
 """
 
 import sys
@@ -152,7 +153,7 @@ def ask_about_data_edit() -> int:
     return operation
 
 
-def edit_title_note_ui(data: dict) -> str:
+def edit_title_note_ui() -> str:
     """ This function is for new title for note. """
     print("""Enter the new title for note.
 
@@ -161,10 +162,18 @@ Only numbers and letters are allowed.
     return validation_data(MAX_SYMBOLS_TITLE)
 
 
-def edit_data_note_ui(data: dict) -> str:
+def edit_data_note_ui() -> str:
     """ This function is for new data for note. """
     print("""Enter the new data for note.
 
 Only numbers and letters are allowed.
 """)
     return validation_data(MAX_SYMBOLS_DATA)
+
+
+def data_deleted(srs: str) -> None:
+    """ This function is for UI for telling user that data is deleted. """
+    print(f"""Data deleted.
+You'll find the data in the following source:
+{srs}
+""")

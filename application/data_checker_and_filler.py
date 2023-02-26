@@ -97,7 +97,7 @@ def update_note(mode: int, data: str, notes: dict, id_note: int) -> dict:
     """ This function chooses a editing mode for a note. """
     if mode in [31]:
         return update_title(data, notes, id_note)
-    elif mode in [32]:
+    if mode in [32]:
         return update_data(data, notes, id_note)
 
 
@@ -115,3 +115,12 @@ def update_data(new_data: str, notes: dict, id_note: int) -> dict:
         if notes['notes'][i].get('id') == id_note:
             notes['notes'][i]['data'] = new_data
             return notes
+
+
+def note_deletion(note_id: int, notes: dict) -> dict:
+    """ This function deletes note with specific id. """
+    for i in range(len(notes['notes'])):
+        if notes['notes'][i].get('id') == note_id:
+            new_notes = notes['notes'][:i] + notes['notes'][-1:i:-1]
+    notes['notes'] = new_notes
+    return notes

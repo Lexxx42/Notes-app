@@ -70,6 +70,10 @@ def pt_print_id_date(data_notes: dict) -> None:
     except KeyError as error:
         print(NO_VALID_FILE)
         logging.exception(error)
+    except IndexError as index_err:
+        print('Nothing to delete!')
+        logging.exception(index_err)
+        return -1
 
 
 def pt_print_id_selection(data_notes: dict, idx: int) -> None:
