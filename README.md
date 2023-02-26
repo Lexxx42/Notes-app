@@ -32,7 +32,7 @@ Console app for managing notes
 - [x] [Print selected] : print selected note to console
 - [x] [Add note] : add new note to file
 - [ ] [Delete note] : delete note from file
-- [ ] [Edit note] : edit selected note
+- [x] [Edit note] : edit selected note
 - [ ] [Module docs] : module documentation
 - [ ] [Function docs] : function documentation
 - [ ] [README] : edit readme documentation
