@@ -11,6 +11,7 @@ from prettytable import PrettyTable
 from .logger import logging
 
 SORTED_PRINT_TIP = 'Sorted by date notes printed as table in console.'
+NO_VALID_FILE = 'No valid file for reading.'
 
 
 def pt_print_all(data_notes: dict) -> None:
@@ -22,8 +23,11 @@ def pt_print_all(data_notes: dict) -> None:
             table.add_row([item[i] for i in table.field_names])
         print(table)
         logging.info('Notes printed as table in console.')
-    except TypeError as err:
-        print(err)
+    except TypeError as error:
+        print(error)
+        logging.exception(error)
+    except KeyError as err:
+        print(NO_VALID_FILE)
         logging.exception(err)
 
 
@@ -41,6 +45,9 @@ def pt_print_filter_date(data_notes: dict) -> None:
     except TypeError as err:
         print(err)
         logging.exception(err)
+    except KeyError as error:
+        print(NO_VALID_FILE)
+        logging.exception(error)
 
 
 def pt_print_id_date(data_notes: dict) -> None:
@@ -60,6 +67,9 @@ def pt_print_id_date(data_notes: dict) -> None:
     except TypeError as err:
         print(err)
         logging.exception(err)
+    except KeyError as error:
+        print(NO_VALID_FILE)
+        logging.exception(error)
 
 
 def pt_print_id_selection(data_notes: dict, idx: int) -> None:
@@ -77,3 +87,6 @@ def pt_print_id_selection(data_notes: dict, idx: int) -> None:
     except TypeError as err:
         print(err)
         logging.exception(err)
+    except KeyError as error:
+        print(NO_VALID_FILE)
+        logging.exception(error)

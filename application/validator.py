@@ -16,7 +16,7 @@ from .logger import logging
 AVAILABLE_MODES_MAIN_MENU = 6
 MUST_BE_INTEGER = 'Incorrect input! Input must be an integer.'
 INCORRECT_INPUT = 'Incorrect input! Please look at the available modes.'
-
+NO_VALID_FILE = 'No valid file for reading.'
 
 def validation_mode() -> int:
     """ Function for check user's input from main mode.
@@ -49,7 +49,7 @@ def validation_operation(main_menu_mode: int) -> int:
         case 3:
             return validate_edit_note()
         case 4:
-            return validate_save_note()
+            return 41
         case 5:
             return validate_delete_note()
         case _:
@@ -88,6 +88,10 @@ def validation_filename() -> str:
             print('Reading default file.')
             logging.info('Reading default file.')
             return filename
+        elif not filename.isalnum():
+            print('Please use only letters and numbers in filename.')
+            logging.info(f'Corrupt filename {filename}.')
+            continue
         print(f'Valid for read {filename = }.')
         logging.info(f'Valid for read {filename = }.')
         return filename
@@ -100,6 +104,9 @@ def validation_id(data: dict) -> int:
         try:
             available_ids = [data['notes'][i]['id'] for i in range(len(data['notes']))]
             selected_id = int(input('Enter id of the note: '))
+            if selected_id in available_ids:
+                logging.info(f'{selected_id = }')
+                return selected_id
         except ValueError as err:
             print(MUST_BE_INTEGER)
             logging.exception(err)
@@ -108,9 +115,10 @@ def validation_id(data: dict) -> int:
             print('Corrupted data file.')
             logging.exception(error)
             return -1
-        if selected_id in available_ids:
-            logging.info(f'{selected_id = }')
-            return selected_id
+        except KeyError as error:
+            print(NO_VALID_FILE)
+            break;
+            logging.exception(error)
         print('Incorrect ID! Please look at the available IDs in the table above.')
         logging.exception('Incorrect ID! Please look at the available IDs in the table above.')
 

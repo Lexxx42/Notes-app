@@ -57,10 +57,12 @@ def choose_option(main_mode: int) -> None | tuple[int, int]:
 
 def ask_about_filename() -> str:
     """ This function is for UI for filename input. """
-    print("""Please enter the filename.
-You can enter name of the file without extension,
+    print("""Enter the filename.
+
+Please enter name of the file without extension,
 or press enter to use default filename: notes
 
+Only numbers and letters are allowed.
 Extension of the file must be .json
 """)
     return validation_filename()
@@ -93,3 +95,36 @@ Maximum number of symbols is {MAX_SYMBOLS_DATA}
 def note_added_ui() -> None:
     """ This function is for notification about adding a note. """
     print('New note added!')
+
+
+def ask_about_filename_for_read() -> str:
+    """ This function is for UI for filename for reading data. """
+    print("""Enter the filename for reading data.
+
+Please enter name of the file without extension,
+or press enter to use default filename: notes
+
+Only numbers and letters are allowed.
+Extension of the file must be .json
+""")
+    return validation_filename()
+
+
+def ask_about_filename_for_save() -> str:
+    """ This function is for UI for filename for saving data. """
+    print("""Enter the filename for saving data.
+
+Please enter name of the file without extension,
+or press enter to use default filename: notes
+
+Only numbers and letters are allowed.
+Extension of the file must be .json
+""")
+    return validation_filename()
+
+def data_saved(srs: str) -> None:
+    """ This function is for UI for telling user that data is saved. """
+    print(f"""Data saved.
+You'll find the data in the following source:
+{srs}
+""")
