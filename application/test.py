@@ -96,7 +96,7 @@ from datetime import datetime
 # print(len("I need to buy some coconut milk for my coffee."))
 
 
-def fill_new_note(sourse: str, data: dict, note_id: int,
+def fill_new_note(source: str, data: dict, note_id: int,
                   note_title: str, note_data: str, date: str) -> tuple[dict, str]:
     """ This functions fills data for a new note. """
     new_note = fill_dict(('id', note_id), ('title', note_title), ('data', note_data), ('date', date))

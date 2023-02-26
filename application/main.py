@@ -10,9 +10,10 @@
 
 from datetime import datetime
 from .logger import logging
-from .user_interface import main_menu, ask_about_filename, select_id_ui, ask_for_title, ask_about_data, note_added_ui
+from .user_interface import main_menu, ask_about_filename, select_id_ui, ask_for_title, ask_about_data, note_added_ui, \
+    ask_about_filename_for_read, ask_about_filename_for_save, data_saved
 from .file_worker import write_to_file, load_from_file
-from .data_checker_and_filler import check_data_storage, generate_filesourse, DEFAULT_SRC, fill_new_note
+from .data_checker_and_filler import check_data_storage, generate_filesource, DEFAULT_SRC, fill_new_note
 from .pretty_print import pt_print_all, pt_print_filter_date, pt_print_id_date, \
     pt_print_id_selection
 
@@ -36,6 +37,8 @@ def main_handler(operation_code: int) -> None:
         handler_for_read(operation_code)
     elif str(operation_code)[0] in ('2'):
         handler_for_add()
+    elif str(operation_code)[0] in ('4'):
+        handler_for_save()
 
 
 def handler_for_read(operation_code: int) -> None:
@@ -47,7 +50,7 @@ def handler_for_read(operation_code: int) -> None:
             if not file_name_valid:
                 data_from_file = load_from_file(DEFAULT_SRC)
             else:
-                data_from_file = load_from_file(generate_filesourse(file_name_valid))
+                data_from_file = load_from_file(generate_filesource(file_name_valid))
             pt_print_all(data_from_file)
             wait_for_continue()
         case 12:
@@ -55,7 +58,7 @@ def handler_for_read(operation_code: int) -> None:
             if not file_name_valid:
                 data_from_file = load_from_file(DEFAULT_SRC)
             else:
-                data_from_file = load_from_file(generate_filesourse(file_name_valid))
+                data_from_file = load_from_file(generate_filesource(file_name_valid))
             pt_print_filter_date(data_from_file)
             wait_for_continue()
         case 13:
@@ -63,7 +66,7 @@ def handler_for_read(operation_code: int) -> None:
             if not file_name_valid:
                 data_from_file = load_from_file(DEFAULT_SRC)
             else:
-                data_from_file = load_from_file(generate_filesourse(file_name_valid))
+                data_from_file = load_from_file(generate_filesource(file_name_valid))
             pt_print_id_date(data_from_file)
             pt_print_id_selection(data_from_file, select_id_ui(data_from_file))
             wait_for_continue()
@@ -73,11 +76,11 @@ def handler_for_add() -> None:
     """ Function for add note operations. """
     file_name_valid = ask_about_filename()
     if not file_name_valid:
-        sourse = DEFAULT_SRC
-        data_from_file = load_from_file(sourse)
+        source = DEFAULT_SRC
+        data_from_file = load_from_file(source)
     else:
-        sourse = generate_filesourse(file_name_valid)
-        data_from_file = load_from_file(sourse)
+        source = generate_filesource(file_name_valid)
+        data_from_file = load_from_file(source)
     try:
         note_id = data_from_file['notes'][-1]['id'] + 1
     except Exception as err:
@@ -90,8 +93,35 @@ def handler_for_add() -> None:
     note_data = ask_about_data()
     date = datetime.today().strftime('%d-%m-%Y')
     upd_data = fill_new_note(data_from_file, note_id, note_title, note_data, date)
-    write_to_file(upd_data, sourse)
+    write_to_file(upd_data, source)
     note_added_ui()
+    wait_for_continue()
+
+
+def handler_for_save() -> None:
+    """ Function for save note file operations. """
+    file_name_valid = ask_about_filename_for_read()
+    try:
+        if not file_name_valid:
+            source = DEFAULT_SRC
+            data_from_file = load_from_file(source)
+        else:
+            source = generate_filesource(file_name_valid)
+            data_from_file = load_from_file(source)
+    except Exception as err:
+        print(err)
+        return -1
+        logging.exception(err)
+    finally:
+        wait_for_continue()
+    filename_for_save = ask_about_filename_for_save()
+    if not filename_for_save:
+        source = DEFAULT_SRC
+    else:
+        source = generate_filesource(filename_for_save)
+    write_to_file(data_from_file, source)
+    data_saved(source)
+    logging.info(f'Data saved to {source=}')
     wait_for_continue()
 
 

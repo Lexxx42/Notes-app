@@ -67,8 +67,8 @@ def fill_notes() -> None:
     logging.info(f'Notes filled in file {DEFAULT_FILENAME}.')
 
 
-def generate_filesourse(custom_filename: str) -> str:
-    """ This functions is for generation of sourse to the note file. """
+def generate_filesource(custom_filename: str) -> str:
+    """ This functions is for generation of source to the note file. """
     try:
         custom_src = DEFAULT_DIRNAME + custom_filename + DEFAULT_EXTENSION
     except Exception as err:

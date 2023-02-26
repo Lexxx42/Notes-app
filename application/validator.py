@@ -49,7 +49,7 @@ def validation_operation(main_menu_mode: int) -> int:
         case 3:
             return validate_edit_note()
         case 4:
-            return validate_save_note()
+            return 41
         case 5:
             return validate_delete_note()
         case _:
@@ -88,6 +88,10 @@ def validation_filename() -> str:
             print('Reading default file.')
             logging.info('Reading default file.')
             return filename
+        elif not filename.isalnum():
+            print('Please use only letters and numbers in filename.')
+            logging.info(f'Corrupt filename {filename}.')
+            continue
         print(f'Valid for read {filename = }.')
         logging.info(f'Valid for read {filename = }.')
         return filename
