@@ -27,7 +27,7 @@ Console app for managing notes
 - [x] [Logging] : logging module
 - [ ] [Logging] : logging in app
 - [x] [Filtration by date] : filter notes by date when reading from file
-- [ ] [Save notes] : save data to file
+- [x] [Save notes] : save data to file
 - [x] [Print all] : print all notes to console
 - [x] [Print selected] : print selected note to console
 - [x] [Add note] : add new note to file
