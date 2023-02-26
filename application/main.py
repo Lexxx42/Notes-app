@@ -6,6 +6,7 @@
 \nhandler_for_read() - handles different operations for read mode.
 \nwait_for_continue() - waiting user to continue.
 \nhandler_for_add() - adding new note to the file.
+\nhandler_for_save() - saving note data to the file.
 """
 
 from datetime import datetime

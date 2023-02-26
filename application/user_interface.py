@@ -8,6 +8,9 @@
 \nask_for_title() - asking for note title UI.
 \nask_about_data() - asking for note data UI.
 \nnote_added_ui() - add note notificaton UI.
+\nask_about_filename_for_read() - asking for note data filename for read UI.
+\nask_about_filename_for_save() - asking for note data filename for save UI.
+\ndata_saved() - telling user about saved data UI.
 """
 
 import sys
