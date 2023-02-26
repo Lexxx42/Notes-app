@@ -10,6 +10,7 @@
 \nupdate_note() - chooses update mode for a note.
 \nupdate_title() - updates title of a note.
 \nupdate_data() - updates data of a note.
+\nnote_deletion() - deletes data from a note.
 """
 
 from os import path, makedirs

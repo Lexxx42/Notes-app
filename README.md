@@ -22,18 +22,18 @@ Console app for managing notes
 - [x] [Generate Data] : generate some data when app starting
 - [x] [Read from file] : read data from json file
 - [x] [Module pretty_print] : prints data to console
-- [ ] [UI] : all menus
-- [ ] [Validation] : validate the data input from user
+- [x] [UI] : all menus
+- [x] [Validation] : validate the data input from user
 - [x] [Logging] : logging module
-- [ ] [Logging] : logging in app
+- [x] [Logging] : logging in app
 - [x] [Filtration by date] : filter notes by date when reading from file
 - [x] [Save notes] : save data to file
 - [x] [Print all] : print all notes to console
 - [x] [Print selected] : print selected note to console
 - [x] [Add note] : add new note to file
-- [ ] [Delete note] : delete note from file
+- [x] [Delete note] : delete note from file
 - [x] [Edit note] : edit selected note
-- [ ] [Module docs] : module documentation
+- [x] [Module docs] : module documentation
 - [ ] [Function docs] : function documentation
 - [ ] [README] : edit readme documentation
 
