@@ -11,10 +11,12 @@
 \nask_about_filename_for_read() - asking for note data filename for read UI.
 \nask_about_filename_for_save() - asking for note data filename for save UI.
 \ndata_saved() - telling user about saved data UI.
+ask_about_data_edit() - asking for data to edit the note UI.
 """
 
 import sys
-from .validator import validation_mode, validation_operation, validation_filename, validation_id, validation_data
+from .validator import validation_mode, validation_operation, validation_filename, validation_id, validation_data, \
+    validate_edit
 
 MAX_SYMBOLS_TITLE = 25
 MAX_SYMBOLS_DATA = 50
@@ -125,9 +127,24 @@ Extension of the file must be .json
 """)
     return validation_filename()
 
+
 def data_saved(srs: str) -> None:
     """ This function is for UI for telling user that data is saved. """
     print(f"""Data saved.
 You'll find the data in the following source:
 {srs}
 """)
+
+
+def ask_about_data_edit() -> None:
+    """ This function is for UI for filename for saving data. """
+    print("""Options for edit
+1 - edit title
+2 - edit data
+
+0 - previous menu
+""")
+    operation = validate_edit()
+    if operation in [30]:
+        return main_menu()
+    return operation

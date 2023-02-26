@@ -47,7 +47,7 @@ def validation_operation(main_menu_mode: int) -> int:
         case 2:
             return 21
         case 3:
-            return validate_edit_note()
+            return 31
         case 4:
             return 41
         case 5:
@@ -138,3 +138,20 @@ def validation_data(max_symbols: int) -> str:
             return fill_data
         print(f'Max characters is {max_symbols}.')
         logging.info(f'Entered data for note {fill_data = } with length = {len(fill_data)}.')
+
+def validate_edit() -> int:
+    """ Function for check user's input for editing the note operation type.
+    \nChecks user input and returns operation type. """
+    number_of_available_modes = 3
+    while True:
+        try:
+            operation_type = int(input('Enter operation code: '))
+        except ValueError as err:
+            print(MUST_BE_INTEGER)
+            logging.exception(err)
+            continue
+        if operation_type in range(number_of_available_modes):
+            logging.info(f'Operation code for read = {operation_type + 30}')
+            return operation_type + 30
+        print(INCORRECT_INPUT)
+        logging.exception(INCORRECT_INPUT)
