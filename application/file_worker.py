@@ -18,12 +18,15 @@ def write_to_file(data: dict, source: str) -> None:
     except FileNotFoundError as err:
         print(f'Source {source} not found. Aborting')
         logging.exception(err)
+        return -1
     except OSError as err:
         print(f'OS error occurred trying to open {source}')
         logging.exception(err)
+        return -1
     except Exception as error:
         print(f'Unexpected error opening {source} is', repr(error))
         logging.exception(error)
+        return -1
 
 
 def load_from_file(source: str) -> dict:
@@ -36,15 +39,16 @@ def load_from_file(source: str) -> dict:
     except json.decoder.JSONDecodeError as jsonerr:
         print(jsonerr)
         logging.exception(jsonerr)
+        return -1
     except FileNotFoundError as err:
         print(f'Source {source} not found. Aborting')
         logging.exception(err)
-        return {}
+        return -1
     except OSError as oserr:
         print(f'OS error occurred trying to open {source}')
         logging.exception(oserr)
-        return {}
+        return -1
     except Exception as excerr:
         print(f'Unexpected error opening {source} is', repr(excerr))
         logging.exception(excerr)
-        return {}
+        return -1

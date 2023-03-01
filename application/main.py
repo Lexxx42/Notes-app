@@ -62,17 +62,15 @@ def handler_for_read(operation_code: int) -> None:
             else:
                 data_from_file = load_from_file(generate_filesource(file_name_valid))
             try:
+                if data_from_file == -1:
+                    return -1
                 data_from_file['notes'][0]
             except IndexError as err:
                 print(err)
                 logging.exception(err)
                 return -1
-            except TypeError as err:
-                print(err)
-                logging.exception(err)
-                return -1
             except KeyError as err:
-                print('No notes in file.')
+                print(err)
                 logging.exception(err)
                 return -1
 
@@ -86,17 +84,15 @@ def handler_for_read(operation_code: int) -> None:
                 data_from_file = load_from_file(generate_filesource(file_name_valid))
 
             try:
+                if data_from_file == -1:
+                    return -1
                 data_from_file['notes'][0]
             except IndexError as err:
                 print(err)
                 logging.exception(err)
                 return -1
-            except TypeError as err:
-                print(err)
-                logging.exception(err)
-                return -1
             except KeyError as err:
-                print('No notes in file.')
+                print('No valid file.')
                 logging.exception(err)
                 return -1
 
@@ -110,17 +106,15 @@ def handler_for_read(operation_code: int) -> None:
                 data_from_file = load_from_file(generate_filesource(file_name_valid))
 
             try:
+                if data_from_file == -1:
+                    return -1
                 data_from_file['notes'][0]
             except IndexError as err:
                 print(err)
                 logging.exception(err)
                 return -1
-            except TypeError as err:
-                print(err)
-                logging.exception(err)
-                return -1
             except KeyError as err:
-                print('No notes in file.')
+                print(err)
                 logging.exception(err)
                 return -1
 
@@ -139,6 +133,8 @@ def handler_for_add() -> None:
         source = generate_filesource(file_name_valid)
         data_from_file = load_from_file(source)
     try:
+        if data_from_file == -1:
+            return -1
         note_id = data_from_file['notes'][-1]['id'] + 1
     except Exception as err:
         print(err)
@@ -159,27 +155,33 @@ def handler_for_save() -> None:
     """ Function for save note file operations. """
     file_name_valid = ask_about_filename_for_read()
     try:
+
         if not file_name_valid:
             source = DEFAULT_SRC
             data_from_file = load_from_file(source)
         else:
             source = generate_filesource(file_name_valid)
             data_from_file = load_from_file(source)
-        filename_for_save = ask_about_filename_for_save()
-        if not filename_for_save:
-            source = DEFAULT_SRC
-        else:
-            source = generate_filesource(filename_for_save)
-        write_to_file(data_from_file, source)
-        data_saved(source)
-        logging.info(f'Data saved to {source=}')
     except Exception as err:
         print(err)
         logging.exception(err)
         return -1
     finally:
+        if data_from_file == -1:
+            return -1
         wait_for_continue()
 
+    filename_for_save = ask_about_filename_for_save()
+    if not filename_for_save:
+        source = DEFAULT_SRC
+    else:
+        source = generate_filesource(filename_for_save)
+    try:
+        write_to_file(data_from_file, source)
+        data_saved(source)
+        logging.info(f'Data saved to {source=}')
+    finally:
+        wait_for_continue()
 
 
 def handler_for_edit() -> None:
@@ -197,6 +199,8 @@ def handler_for_edit() -> None:
         logging.exception(err)
         return -1
     finally:
+        if data_from_file == -1:
+            return -1
         wait_for_continue()
 
     try:
@@ -205,12 +209,8 @@ def handler_for_edit() -> None:
         print(err)
         logging.exception(err)
         return -1
-    except TypeError as err:
-        print(err)
-        logging.exception(err)
-        return -1
     except KeyError as err:
-        print('No notes in file.')
+        print(err)
         logging.exception(err)
         return -1
 
@@ -244,6 +244,8 @@ def handler_for_delete() -> None:
         logging.exception(err)
         return -1
     finally:
+        if data_from_file == -1:
+            return -1
         wait_for_continue()
 
     pt_print_id_date(data_from_file)
@@ -251,6 +253,10 @@ def handler_for_delete() -> None:
     try:
         data_from_file['notes'][0]
     except IndexError as err:
+        print(err)
+        logging.exception(err)
+        return -1
+    except KeyError as err:
         print(err)
         logging.exception(err)
         return -1
