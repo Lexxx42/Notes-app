@@ -67,6 +67,14 @@ def handler_for_read(operation_code: int) -> None:
                 print(err)
                 logging.exception(err)
                 return -1
+            except TypeError as err:
+                print(err)
+                logging.exception(err)
+                return -1
+            except KeyError as err:
+                print('No notes in file.')
+                logging.exception(err)
+                return -1
 
             pt_print_all(data_from_file)
             wait_for_continue()
@@ -83,6 +91,14 @@ def handler_for_read(operation_code: int) -> None:
                 print(err)
                 logging.exception(err)
                 return -1
+            except TypeError as err:
+                print(err)
+                logging.exception(err)
+                return -1
+            except KeyError as err:
+                print('No notes in file.')
+                logging.exception(err)
+                return -1
 
             pt_print_filter_date(data_from_file)
             wait_for_continue()
@@ -97,6 +113,14 @@ def handler_for_read(operation_code: int) -> None:
                 data_from_file['notes'][0]
             except IndexError as err:
                 print(err)
+                logging.exception(err)
+                return -1
+            except TypeError as err:
+                print(err)
+                logging.exception(err)
+                return -1
+            except KeyError as err:
+                print('No notes in file.')
                 logging.exception(err)
                 return -1
 
@@ -141,21 +165,21 @@ def handler_for_save() -> None:
         else:
             source = generate_filesource(file_name_valid)
             data_from_file = load_from_file(source)
+        filename_for_save = ask_about_filename_for_save()
+        if not filename_for_save:
+            source = DEFAULT_SRC
+        else:
+            source = generate_filesource(filename_for_save)
+        write_to_file(data_from_file, source)
+        data_saved(source)
+        logging.info(f'Data saved to {source=}')
     except Exception as err:
         print(err)
         logging.exception(err)
         return -1
     finally:
         wait_for_continue()
-    filename_for_save = ask_about_filename_for_save()
-    if not filename_for_save:
-        source = DEFAULT_SRC
-    else:
-        source = generate_filesource(filename_for_save)
-    write_to_file(data_from_file, source)
-    data_saved(source)
-    logging.info(f'Data saved to {source=}')
-    wait_for_continue()
+
 
 
 def handler_for_edit() -> None:
@@ -179,6 +203,14 @@ def handler_for_edit() -> None:
         data_from_file['notes'][0]
     except IndexError as err:
         print(err)
+        logging.exception(err)
+        return -1
+    except TypeError as err:
+        print(err)
+        logging.exception(err)
+        return -1
+    except KeyError as err:
+        print('No notes in file.')
         logging.exception(err)
         return -1
 
