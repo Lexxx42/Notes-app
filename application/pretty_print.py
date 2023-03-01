@@ -7,6 +7,7 @@ This module uses the PrettyTable library to print notes to the console.
 \npt_print_id_selection() - prints note with specific id.
 """
 
+from datetime import datetime
 from prettytable import PrettyTable
 from .logger import logging
 
@@ -34,12 +35,11 @@ def pt_print_all(data_notes: dict) -> None:
 def pt_print_filter_date(data_notes: dict) -> None:
     """ Print all notes to the console sorted by date (DECS order). """
     try:
+        sorted_notes = sorted(data_notes['notes'], key=lambda x: datetime.strptime(x['date'], '%d-%m-%Y'), reverse=True)
         table = PrettyTable()
-        table.field_names = list(data_notes['notes'][0].keys())
-        for item in data_notes['notes']:
+        table.field_names = list(sorted_notes[0].keys())
+        for item in sorted_notes:
             table.add_row([item[i] for i in table.field_names])
-        table.sortby = 'date'
-        table.reversesort = True
         print(table)
         logging.info(SORTED_PRINT_TIP)
     except TypeError as err:
@@ -53,15 +53,14 @@ def pt_print_filter_date(data_notes: dict) -> None:
 def pt_print_id_date(data_notes: dict) -> None:
     """ Print all note id's and last edited date to the console. """
     try:
+        sorted_notes = sorted(data_notes['notes'], key=lambda x: datetime.strptime(x['date'], '%d-%m-%Y'), reverse=True)
         table = PrettyTable()
-        all_fields = list(data_notes['notes'][0].keys())
+        all_fields = list(sorted_notes[0].keys())
         table.field_names = [_ for _ in all_fields if _ in ['id', 'date']]
 
-        for item in data_notes['notes']:
+        for item in sorted_notes:
             table.add_row([item[i] for i in table.field_names])
 
-        table.sortby = 'date'
-        table.reversesort = True
         print(table)
         logging.info(SORTED_PRINT_TIP)
     except TypeError as err:
